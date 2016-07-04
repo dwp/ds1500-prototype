@@ -1,0 +1,87 @@
+// ############################################################################
+// core low level utility/helper functions
+// ############################################################################
+
+/// @function map-value
+/// Returns a value from a nested map.
+///
+/// @access public
+/// @param {Map | Number | String} $map-value - A map or value which is checked recursively.
+/// @param {List} $map-value - The list of keys in sequential order.
+/// @return {Number | String} - The value of the final key.
+///
+/// @example
+/// map-value($map, (key1, key2));
+@function map-value($map-value, $keys, $prev-key: null) {
+	@if(type-of($map-value) != map or length($keys) == 0) {
+		@if($map-value == null) {
+			@error '"#{$prev-key}" not found in map-value keys.';
+		}
+		@return $map-value;
+	}
+	$curr-key: nth($keys, 1);
+	@return map-value(map-get($map-value, $curr-key), slice($keys, 2), $curr-key);
+}
+
+/// @function slice
+/// Returns a new list partial from a given list.
+///
+/// @access public
+/// @param {List} $list - The target list from which to derive a partial list.
+/// @param {Number} $start - The start index of the slice operation.
+/// @return {Number} $end - The end index of the slice operation (Optional, defaults to list length).
+///
+/// @example
+/// slice($list, 1, 2);
+@function slice($list, $start: 1, $end: length($list)) {
+	$result: ();
+	@if $start > $end or $start < 1 or $end < 1 or $start > length($list) or $end > length($list)  {
+		@return $result;
+	}
+	@else {
+		@for $i from $start through $end {
+			$result: append($result, nth($list, $i));
+		}
+	}
+	@return $result;
+}
+
+/// jQuery-style extend function
+/// About `map-merge()`:
+/// * only takes 2 arguments
+/// * is not recursive
+/// @param {Map} $object - first map
+/// @param {ArgList} $objects - other maps
+/// @param {Bool} $deep - recursive mode
+/// @return {Map}
+@function extend($object, $objects.../*, $deep */) {
+  $last: nth($objects, -1);
+  $deep: $last == true;
+  $max: if($deep, length($objects) - 1, length($objects));
+
+  // Loop through all maps in $objects...
+  @for $i from 1 through $max {
+    // Store current map
+    $current: nth($objects, $i);
+
+    // If not in deep mode, simply merge current map with object
+    @if not $deep {
+      $object: map-merge($object, $current);
+    }
+
+    // If in deep mode
+    @else {
+      // Loop through all tuples in current map
+      @each $key, $value in $current {
+        // If value is a nested map and same key from object is a nested map as well
+        @if type-of($value) == "map" and type-of(map-get($object, $key)) == "map" {
+          // Recursive extend
+          $value: extend(map-get($object, $key), $value, true);
+        }
+        // Merge current tuple with object
+        $object: map-merge($object, ($key: $value));
+      }
+    }
+  }
+  @return $object;
+}

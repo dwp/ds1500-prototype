@@ -1,0 +1,34 @@
+{% extends "layouts/dwp_layout.html" %}
+
+{% set page = {
+  title: 'index'
+} %}
+
+{% block primary %}
+
+  <h1 class="heading-xlarge">{{ serviceName }} Prototypes</h1>
+  
+  <p>The {{ serviceName }} prototypes are developed in the various <a href="https://www.gov.uk/service-manual" title="GDS Service manaual explanation of service design phases">service design phases</a> below is a list of the prototype iterations for each phase.</p>
+  
+  {% for stage in prototype.stages %}
+
+    <h2 class="heading-medium">{{ stage | upper }}</h2>
+
+    {% if prototype.versions %}
+
+      <ul class="list list-bullet">
+          {% for version in prototype.versions %}
+            {% if version.url | contains(stage) %}<li><a href="{{ version.url }}">{{ version.title }}</a></li>{% endif %}
+          {% endfor %}
+  		</ul>
+
+    {% else %}
+
+      <p>There are no iterations for this stage yet</p>
+
+    {% endif %}
+
+  {% endfor %}
+
+  
+{% endblock %}

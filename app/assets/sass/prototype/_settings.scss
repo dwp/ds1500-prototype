@@ -1,0 +1,59 @@
+// ############################################################################
+// base settings / configuration objects
+// ############################################################################
+
+// base configuration map for common attributes of the site
+
+$base: (
+  font: (
+    size: 16px,
+    color: set-color(bodycopy)
+  ),
+  spacing: (
+    base: 1.25rem,
+    small: 0.75rem,
+    large: 2em
+  )
+);
+
+$s-spacing-unit: map-value($base,(spacing, base));
+$s-base-border: 1px solid get-color(grey, light);
+
+// sass-mq settings
+// ############################################################################
+
+// To enable support for browsers that do not support @media queries,
+// (IE <= 8, Firefox <= 3, Opera <= 9) set $mq-responsive to false
+// Create a separate stylesheet served exclusively to these browsers,
+// meaning @media queries will be rasterized, relying on the cascade itself
+$mq-responsive: true;
+
+$mq-breakpoints:(
+	small: (size: 480px, grid-divisions: 8, grid-query-type: dual),
+	medium: (size: 768px, grid-divisions: 8, grid-query-type: dual),
+	large: (size: 960px, grid-divisions: 12, grid-query-type: min),
+	xlarge: (size: 1280px, grid-divisions: 12, grid-query-type: min)
+);
+
+// Define the breakpoint from the $mq-breakpoints list that should
+// be used as the target width when outputting a static stylesheet
+// (i.e. when $mq-responsive is set to 'false').
+$mq-static-breakpoint: large;
+
+// If you want to display the currently active breakpoint in the top
+// right corner of your site during development, add the breakpoints
+// to this list, ordered by width, e.g. (mobile, tablet, desktop).
+// $mq-show-breakpoints: (small, medium, large, xlarge);
+
+// modified wizardry-grids settings
+// ############################################################################
+
+$grids-gutter:                20px;
+$grids-use-silent-classes:    false;
+$grids-push:                  false;
+$grids-pull:                  false;
+$grids-use-markup-fix:        false;
+
+$grids-breakpoint-has-widths: ('small', 'medium', 'large', 'xlarge');
+$grids-breakpoint-has-push:   ();
+$grids-breakpoint-has-pull:   ();

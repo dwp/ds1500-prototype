@@ -1,0 +1,40 @@
+@mixin alignmentClasses($breakpoint: null, $type: from) {
+  $prefix: "";
+  @if $breakpoint {
+    $prefix: "#{$breakpoint}--";
+  }
+  @if $type != "from" {
+    $prefix: "until--" + $prefix;
+  }
+  .#{$prefix}ta--right {
+    text-align: right;
+  }
+  .#{$prefix}ta--left {
+    text-align: left;
+  }
+  .#{$prefix}ta--center {
+    text-align: center;
+  }
+}
+
+@include alignmentClasses;
+
+@each $breakpoint, $breakpoint-name in $mq-breakpoints {
+  
+  @include mq($from: $breakpoint) {
+    @include alignmentClasses($breakpoint);
+  }
+  @include mq($until: $breakpoint) {
+    @include alignmentClasses($breakpoint, $type: until);
+  }
+  
+  %hidden--#{$breakpoint} {
+    @include mq($until: $breakpoint) {
+      display: none;
+    }
+  }
+  .hidden--#{$breakpoint} {
+    @extend %hidden--#{$breakpoint};
+  }
+  
+}

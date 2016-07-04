@@ -1,0 +1,44 @@
+{% import "macros/elements_forms.html" as elements_forms %}
+
+{% extends "layouts/layout.html" %}
+
+{% block page_title %}
+  {{ (page.title + ' &ndash; ') | safe if page.title }}{{ serviceName }}
+{% endblock %}
+
+{% block body_classes %}{% if page.body_classes %}{% for class in page.body_classes %}{{ class }}{% if not loop.last and loop.length > 1 %} {% endif %}{% endfor %}{% endif %} {{ prototype.current.body_class }}{% endblock %}
+
+{% block content %}
+  <main id="content"{{ (' class="' + page.contentClasses + '"') | safe if page.contentClasses }}>    
+    {% block main %}
+      {% block prepend_main %}{% endblock %}
+      <div class="grid-row">
+        
+        {% block __primary__ %}
+          <div class="column-{{ page.primary.col | d('two-thirds') }}">
+            {% block primary %}{% endblock %}
+          </div>
+        {% endblock %}
+        
+        {% block __secondary__ %}
+          {% if page.secondary %}
+          <div class="column-{{ page.secondary.col | d('one-third') }}">
+            {% block secondary %}  
+            {% endblock %}
+          </div>
+          {% endif %}
+        {% endblock %}
+      
+      </div>
+      {% block append_main %}{% endblock %}
+    {% endblock %}
+  </main>
+{% endblock %}
+
+{% block body_end %}
+  {{ super() }}
+  {% if page.dev %}
+    {{ (serviceName + " context data: ") | log(true) }}
+    {{ __locals__ | log }}
+  {% endif %}
+{% endblock %}

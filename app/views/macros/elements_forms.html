@@ -1,0 +1,26 @@
+{% macro label(label) %}
+  <label class="{{ 'form-label' | setClasses(label.metadata) }}">{{ label.text }}</label>
+{% endmacro %}
+
+{% macro control(control) %}
+  <{{ control.element | d('input') }} type="{{ control.type | d('text') }}" name="name" value="" class="{{ 'form-control' | setClasses(control.metadata) }}">
+{% endmacro %}
+
+{% macro control_text(control) %}
+  {{
+    control({
+      type: control.type | d('text'),
+      metadata: control.metadata | deeperMerge({
+        modifiers: ['text']
+      })
+    })
+  }}
+{% endmacro %}
+
+{% macro control_email(control) %}
+  {{
+    control_text({
+      type: 'email'
+    })
+  }}
+{% endmacro %}

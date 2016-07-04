@@ -1,0 +1,94 @@
+{% macro project_item(project) %}
+  {% set placeHolderPriority = project.priority | d('5') %}
+  <div class="{{ 'grid__item' | setClasses(project.metadata | deeperMerge({ 
+    modifiers: [placeHolderPriority],
+    classes: [
+      'directorate-all',
+      'minister-all',
+      'status-all',
+      'trigger-all',
+      'js-project-item',
+      'grid__item',
+      'one-whole',
+      'large--one-half',
+      'xlarge--one-third'
+    ] 
+  })) }}">
+    <div class="{{ 'project-item project-item--priority-' + placeHolderPriority }}" data-detail-url="#">
+      <div class="grid" style="margin-bottom: 20px;">
+        <div class="grid__item two-thirds">
+          <h3 class="project-item__title heading-medium">{{ project.title | d('title') }}</h3>
+        </div>
+        <div class="grid__item one-third ta--right">
+          <div class="project-item__priority project-item__priority--{{ project.priority | d('5') }} ta--right">
+            <div class="project-item__priority__label">Priority</div>
+            <div class="project-item__priority__rating">{{ project.priority | d('5') }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-item__description">
+        <p>{{ project.description | d('description')}}</p>
+      </div>
+      <div class="project-item__metadata">
+        
+        <div class="project-item__metadata__status">
+            <h2 class="heading-small project-item__metadata__status__title">{{ project.status | d('In development') }}</h2>
+            {# <p class="project-item__metadata__status__label">{{ project.status | d('In development') }}</p> #}
+        </div>
+        
+        <div class="grid project-item__metadata__list">
+          <div class="grid__item one-half project-item__metadata__list-item">
+            <p class="project-item__metadata__list__title">Directorate</p>
+            <p>{{ project.directorate | d('Health and Policy') }}</p>
+          </div>
+          <div class="grid__item one-half project-item__metadata__list-item">
+            <p class="project-item__metadata__list__title">Director/SRO</p>
+            <p>{{ project.director | d('Justin Russsell') }}</p>
+          </div>
+          <div class="grid__item one-half project-item__metadata__list-item">
+            <p class="project-item__metadata__list__title">Capability</p>
+            <p>{{ project.team | d('5/8') }} Members</p>
+          </div>
+          <div class="grid__item one-half project-item__metadata__list-item">
+            <p class="project-item__metadata__list__title">Due date</p>
+            <p class="project-item__metadata__list__date">{{ project.duedate | d('09 June 2016') }}</p>
+          </div>
+        </div>
+        
+        <div class="project-item__keydata grid grid--middle">
+          <div class="grid__item one-whole">
+            <a href="project" class="button">View project</a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro project_header() %}
+
+<div class="column-full back-link">        
+  <a href="javascript:history.back()">Back</a>
+</div>
+
+<div class="column-two-thirds">        
+  <h1 class="heading-xlarge projectname" style="margin-top:5px">Benefit Cap &mdash; New Levels</h1>
+  <p class="font-medium">On-going work to seek steers from Ministers to inform regulations and delivery.</p> 
+  <p style="margin-bottom:0"><span class="bold-small">Programme</span>: None</p>
+</div>
+
+<div class="column-one-third" style="padding-top:0px;">    
+  <div class="details-box clearfix">
+    <div class="priority">Priority<br /><span class="priority-num">4</span> </div>
+    <p class=""> <span class="label">Due Date</span><br /> November 2016 </p>
+    <p class=""> <span class="label">Minister</span><br /> Lord Freud </p>
+    <p class=""> <span class="label">SRO</span><br /> Susan Parks </p>
+    <div class="reasons" id="reasons">
+      <h3 class="heading">Priority Factors</h3>
+      <p>In the Summer Budget 2015, the Chancellor set out a package of reforms to deliver the welfare savings the Government commited to in its election manifesto; set out in The Welfare Reform and Work Act 2016.</p>
+    </div>
+  </div>
+</div>
+
+{% endmacro %}
