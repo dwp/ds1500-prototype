@@ -12,7 +12,15 @@
   Your details
 </h1>
 
-<form action="{{ prototype.current.path }}/store-details" method="post">
+{% if session.journey %}
+  {% if session.journey == "dynamic" %}
+    {% set nextScreen = 'request-permission' %}
+  {% else %}
+    {% set nextScreen = 'enter-unique-id' %}
+  {% endif %}
+{% endif %}
+
+<form action="{{ prototype.current.path + (nextScreen | d('enter-unique-id')) }}" method="post">
 
   <!-- Full name -->
   <div class="form-group">
