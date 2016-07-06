@@ -8,17 +8,40 @@
 {% extends page.layout | d(prototype.current.layout) %}
 
 {% block primary %}
+
   <h1 class="heading-xlarge">
     Scan the barcode on your fitnote
   </h1>
-
-  <img src="/public/images/guide-barcode-scan-2x.png" width="320" />
-
-  <div id="image-holder">
-
+  
+  <img src="/public/images/guide-barcode-scan-2x.png" width="50%" />  
+  
+  <div class="preview-box">
+    <div class="preview-box__inner">
+      <div class="preview-box__image">
+        <div class="preview-box__image__thumb">
+          <div id="image-holder" class="preview-box__image__thumb__img"></div>
+        </div>
+      </div>
+      <div class="preview-box__ui">
+        <p>Is the barcode fully visible?</p>
+        <div class="grid">
+          <div class="grid__item one-half">
+            <a href="#" class="preview-retry button" style="width: 100%;">No - Retry</a>
+          </div>
+          <div class="grid__item one-half">
+            <a href="#" class="preview-send button" style="width: 100%;">Yes - send it</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  
+  <div class="form-group">
+    <a href="#" class="button fake-button" id="fake-input" style="width:100%;">Scan your barcode</a>
   </div>
 
-  <div class="form-group">
+  <div class="form-group visuallyhidden">
     <label class="form-label-bold" for="scan-barcode">Scan barcode</label>
     <input type="file" accept="image/*" class="button" id="scan-barcode" name="scan-barcode">
   </div>
@@ -26,26 +49,35 @@
 {% endblock %}
 
 {% block body_end %}
-
+  
   {{ super() }}
-
+  
   <script language="JavaScript">
-
+    
     var page = {
-
+      
       handleUpload: function() {
+        
         var self = this;
         var $input = $('#scan-barcode');
+        var $fakeInput = $('#fake-input');
+        var $previewBox = $('.preview-box');
+        var $previewSend = $('.preview-send');
+        var $previewRetry = $('.preview-retry');
+        var $imageHolder = $("#image-holder");
+        var reader;
+        
         if($input.length) {
+          
           $input.on('change', function(e){
-
+            
             //Get count of selected files
              var countFiles = $(this)[0].files.length;
 
              var imgPath = $(this)[0].value;
              var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
-             var image_holder = $("#image-holder");
-             image_holder.empty();
+             $previewBox.removeClass('active');
+             $imageHolder.empty();
 
              if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
                  if (typeof (FileReader) != "undefined") {
@@ -53,41 +85,58 @@
                      //loop for each file selected for uploaded.
                      for (var i = 0; i < countFiles; i++) {
 
-                         var reader = new FileReader();
+                         reader = new FileReader();
                          reader.onload = function (e) {
                              $("<img />", {
                                  "src": e.target.result,
                                      "class": "thumb-image"
-                             }).appendTo(image_holder);
+                             }).appendTo($imageHolder);
                          }
 
-                         image_holder.show();
+                         $imageHolder.show();
                          reader.readAsDataURL($(this)[0].files[i]);
-
+                         $previewBox.addClass('active');
+                         
                      }
 
                  } else {
                      alert("This browser does not support FileReader.");
                  }
              } else {
-                 alert("Pls select only images");
+                 alert("Please select only images");
              }
-
+            
           });
+        
+          $fakeInput.on('click', function(e){
+            $input.trigger('click');
+            e.preventDefault();
+            
+          });
+          
+          $previewRetry.on('click', function(e){
+            $imageHolder.empty();
+            $input.attr('value','');
+            $input.trigger('click');
+            // console.log($input);
+            e.preventDefault();
+          })
+        
         }
+        
       },
-
+      
       init: function() {
         var self = this;
         self.handleUpload();
       }
-
+        
     }
-
+    
     $(function(){
       page.init();
     });
-
+    
 	</script>
-
+  
 {% endblock %}
