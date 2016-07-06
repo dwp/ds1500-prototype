@@ -3,6 +3,10 @@
 // prototype specific styles
 @import 'prototype';
 
+img {
+  max-width: 90%;
+}
+
 .alert-default {
   border-color: $light-blue;
   background-color: mix(white, $light-blue, 90%);
@@ -17,22 +21,21 @@
 }
 .form-ID {
   @extend .form-date;
-  background: $govuk-blue;
-  display: inline-block;
-  margin: 15px 0;
-  padding: 15px;
+//  background: $govuk-blue;
+//  margin: 15px 0;
+//  padding: 15px;
 
-  .form-group::after {
+  .form-group:not(:last-of-type)::after {
     content: "-";
-    color: $white;
+//    color: $white;
     display: inline;
     position: absolute;
     margin: 10px 0 0 5px;
   }
 
-  legend {
-    color: $white;
-  }
+//  legend {
+//    color: $white;
+//  }
 }
 .govuk-box-permission {
   @extend .govuk-box-highlight;
@@ -47,8 +50,8 @@
 
   img {
     margin: 10px auto;
-    max-width: 80%;
-    width: auto;
+//    max-width: 80%;
+//    width: auto;
   }
 
   p {

@@ -12,10 +12,10 @@
     Scan the barcode on your fitnote
   </h1>
 
-  <img src="/public/images/guide-barcode-scan-2x.png" width="50%" />
-  
+  <img src="/public/images/guide-barcode-scan-2x.png" width="320" />
+
   <div id="image-holder">
-    
+
   </div>
 
   <div class="form-group">
@@ -26,19 +26,19 @@
 {% endblock %}
 
 {% block body_end %}
-  
+
   {{ super() }}
-  
+
   <script language="JavaScript">
-    
+
     var page = {
-      
+
       handleUpload: function() {
         var self = this;
         var $input = $('#scan-barcode');
         if($input.length) {
           $input.on('change', function(e){
-            
+
             //Get count of selected files
              var countFiles = $(this)[0].files.length;
 
@@ -63,7 +63,7 @@
 
                          image_holder.show();
                          reader.readAsDataURL($(this)[0].files[i]);
-                         
+
                      }
 
                  } else {
@@ -72,22 +72,22 @@
              } else {
                  alert("Pls select only images");
              }
-            
+
           });
         }
       },
-      
+
       init: function() {
         var self = this;
         self.handleUpload();
       }
-      
+
     }
-    
+
     $(function(){
       page.init();
     });
-    
+
 	</script>
-  
+
 {% endblock %}
