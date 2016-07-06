@@ -111,12 +111,12 @@
           $fakeInput.on('click', function(e){
             $input.trigger('click');
             e.preventDefault();
-            
           });
           
           $previewRetry.on('click', function(e){
             $imageHolder.empty();
             $input.attr('value','');
+            $input.trigger('change');
             $input.trigger('click');
             // console.log($input);
             e.preventDefault();
