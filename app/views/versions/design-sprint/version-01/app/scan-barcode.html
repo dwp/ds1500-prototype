@@ -17,6 +17,10 @@
   <p>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   </p>
+  
+  <div id="image-holder">
+    
+  </div>
 
   <div class="form-group">
     <label class="form-label-bold" for="scan-barcode">Scan barcode</label>
@@ -25,5 +29,69 @@
 
 {% endblock %}
 
-{% block secondary %}
+{% block body_end %}
+  
+  {{ super() }}
+  
+  <script language="JavaScript">
+    
+    var page = {
+      
+      handleUpload: function() {
+        var self = this;
+        var $input = $('#scan-barcode');
+        if($input.length) {
+          $input.on('change', function(e){
+            
+            //Get count of selected files
+             var countFiles = $(this)[0].files.length;
+
+             var imgPath = $(this)[0].value;
+             var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+             var image_holder = $("#image-holder");
+             image_holder.empty();
+
+             if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
+                 if (typeof (FileReader) != "undefined") {
+
+                     //loop for each file selected for uploaded.
+                     for (var i = 0; i < countFiles; i++) {
+
+                         var reader = new FileReader();
+                         reader.onload = function (e) {
+                             $("<img />", {
+                                 "src": e.target.result,
+                                     "class": "thumb-image"
+                             }).appendTo(image_holder);
+                         }
+
+                         image_holder.show();
+                         reader.readAsDataURL($(this)[0].files[i]);
+                         
+                     }
+
+                 } else {
+                     alert("This browser does not support FileReader.");
+                 }
+             } else {
+                 alert("Pls select only images");
+             }
+            
+          });
+        }
+      },
+      
+      init: function() {
+        var self = this;
+        self.handleUpload();
+      }
+      
+    }
+    
+    $(function(){
+      page.init();
+    });
+    
+	</script>
+  
 {% endblock %}
