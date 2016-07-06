@@ -1,0 +1,87 @@
+{% set page = {
+  title: 'index',
+  dev: true,
+  secondary: false,
+  html_classes: ['page-class']
+} %}
+
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+
+
+  <h1 class="heading-xlarge">
+    Scan the barcode on your fitnote
+  </h1>
+  
+  <div id="camera-preview" class="camera-preview"></div>
+  
+  <div id="camera-snap" class="camera-snap"></div>
+
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+
+  <button id="cambutton" class="button cambutton">Scan barcode</button>
+
+{% endblock %}
+
+{% block body_end %}
+  
+  {{ super() }}
+  
+  <script src="/public/javascripts/prototype/webcam.js" charset="utf-8"></script>
+  <script language="JavaScript">
+    
+    var page = {
+      
+      initCam: function() {
+        
+        var self = this;
+        
+    		Webcam.set({
+    			width: 648,
+    			height: 480,
+    			dest_width: 640,
+    			dest_height: 480,
+    			image_format: 'jpeg',
+    			jpeg_quality: 90
+    		});
+        
+    		Webcam.attach( '#camera-preview' );
+        var $cambutton = $('#cambutton');
+        
+        if($cambutton.length) {
+          $cambutton.on('click',function(e){
+            
+            Webcam.snap(function(data_uri) {
+              self.handleSnap(data_uri);
+            });
+            
+          });
+        }
+        
+      },
+      
+      handleSnap: function handleSnap(data_uri) {
+        var $snap = $('img').attr({
+          'src': data_uri,
+          'height': '100%'
+        });
+        $snap.appendTo($('#camera-snap'));
+      },
+      
+      init: function() {
+        var self = this;
+        self.initCam();
+      }
+      
+    }
+    
+    $(function(){
+      page.init();
+    });
+    
+	</script>
+  
+{% endblock %}

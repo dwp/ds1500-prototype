@@ -4,3 +4,18 @@
 @import 'prototype/sass-mq';
 @import 'prototype/grids';
 @import 'prototype/generic';
+
+.camera-preview {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+.camera-snap {
+  display: block;
+  width: 100%;
+  img {
+    display: block;
+    width: 100%;
+  }
+}

@@ -1,24 +1,26 @@
 {% set page = {
-  title: 'index',
+  title: 'Scan the barcode on your fitnote',
   dev: true,
-  secondary: true,
+  secondary: false,
   html_classes: ['page-class']
 } %}
 
 {% extends page.layout | d(prototype.current.layout) %}
 
 {% block primary %}
+
+<form action="{{ prototype.current.path }}scan-camera" method="post">
+
   <h1 class="heading-xlarge">
-    Scan the barcode on your fitnote
+    {{ page.title }}
   </h1>
 
   <p>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   </p>
 
-  <a href="your-doctors-note" class="button">Scan barcode</a>
+  <button type="submit" class="button">Scan barcode</button>
 
-{% endblock %}
+</form>
 
-{% block secondary %}
 {% endblock %}
