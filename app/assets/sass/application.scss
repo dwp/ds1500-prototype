@@ -4,12 +4,16 @@
 @import 'prototype';
 
 img {
-  max-width: 90%;
+  max-width: 100%;
 }
 
 .alert-default {
   border-color: $light-blue;
   background-color: mix(white, $light-blue, 90%);
+}
+.alert-warning {
+  border-color: $red;
+  background-color: mix(white, $mellow-red, 90%);
 }
 .button-secondary {
   @include button($grey-3);

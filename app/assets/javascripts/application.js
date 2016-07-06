@@ -1,3 +1,10 @@
+$("a").click(function() {
+  var dummyLink = $(this).attr("href");
+  if( dummyLink == "#" ) {
+    return false;
+  }
+});
+
 function ShowHideContent() {
   var self = this;
 
