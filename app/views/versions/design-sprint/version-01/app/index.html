@@ -9,79 +9,83 @@
 
 {% block primary %}
   <h1 class="heading-xlarge">
-    Provide a fitnote
+    Provide a fit note
   </h1>
 
   <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    If you need to give the Department for Work and Pensions (DWP) a fit note, you can send it to them online.
+
   </p>
 
-  <p class="bold-large">
+  <p>
     You can either:
   </p>
-  
+
   <form action="{{ prototype.current.path }}/your-details" method="post">
-    
+
     <input type="hidden" name="journey" value="dynamic">
 
     <h2 class="heading-medium">
-      Let us get it direct from NHS
-    </h2>
-
-    <p>By providing some details and giving your permission your fitnote can be obtained automatically from the NHS.</p>
-
-    <button type="submit" class="button">Go for it</button>
-  
-  </form>
-  
-  <form action="{{ prototype.current.path }}/your-details" method="post">
-    
-    <input type="hidden" name="journey" value="manual">
-    
-    <h2 class="heading-medium">
-      Enter fitnote online
+      Let the DWP get it directly from the NHS
     </h2>
 
     <p>
-      Enter a few details from your paper note online and we can get the rest.
-    </p>
-
-    <button type="submit" class="button">Start!</button>
-    
-  </form>
-  
-  <form action="{{ prototype.current.path }}/scan-barcode" method="post">
-    
-    <input type="hidden" name="journey" value="barcode">
-
-    <h2 class="heading-medium">
-      Scan the barcode using your mobile device
-    </h2>
-
-    <p>
-      Use the camera on your mobile device to scan the barcode on your paper note and we can get the information instantly.
+      By providing some details your fit note can be accessed from the NHS systems. You’ll be asked for your permission first.
     </p>
 
     <button type="submit" class="button">Start</button>
 
   </form>
-  
+
+  <form action="{{ prototype.current.path }}/scan-barcode" method="post">
+
+    <input type="hidden" name="journey" value="barcode">
+
+    <h2 class="heading-medium">
+      Use your mobile phone to scan your paper fit note
+    </h2>
+
+    <p>
+      Use the camera on your mobile phone to scan the barcode on your paper fit note. You’ll see your digital fit note, then can send it instantly.
+    </p>
+
+    <button type="submit" class="button">Start</button>
+
+  </form>
+
+  <form action="{{ prototype.current.path }}/your-details" method="post">
+
+    <input type="hidden" name="journey" value="manual">
+
+    <h2 class="heading-medium">
+      Enter the unique code from your fit note
+    </h2>
+
+    <p>
+      Fill in your details and the unique code from your paper fit note to see your digital fit note - then send it instantly.
+    </p>
+
+    <button type="submit" class="button">Start</button>
+
+  </form>
+
   <h2 class="heading-medium">
-    Post your fitnote
+    Post your fit note
   </h2>
 
   <p>
-    If you still want to post your fitnote, please address to:
+    You can post your fit note to:
   </p>
 
-  <p class="bold-small">
-    12 Barrow Home, Wembley, London, WF5 7RT
+  <p>
+    12 Barrow Home<br>
+    London<br>
+    W5 7JT
   </p>
 
   <p style="color:red;">
-    Beware! This is likely to get lost. Very lost!
+    Don’t post your fit note unless you have to - it’s cheaper, quicker and safer to send it online.
   </p>
-
 
 {% endblock %}
 
