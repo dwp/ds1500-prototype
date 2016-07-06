@@ -15,6 +15,25 @@
     padding: 10px 15px 10px;
   }
 }
+.form-ID {
+  @extend .form-date;
+  background: $govuk-blue;
+  display: inline-block;
+  margin: 15px 0;
+  padding: 15px;
+
+  .form-group::after {
+    content: "-";
+    color: $white;
+    display: inline;
+    position: absolute;
+    margin: 10px 0 0 5px;
+  }
+
+  legend {
+    color: $white;
+  }
+}
 .govuk-box-permission {
   @extend .govuk-box-highlight;
   background: $govuk-blue;
