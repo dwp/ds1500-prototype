@@ -12,66 +12,70 @@
   Your details
 </h1>
 
-<!-- Full name -->
-<div class="form-group">
-  <label class="form-label-bold" for="full-name">Full name</label>
-  <input type="text" class="form-control" id="full-name">
-</div>
+<form action="{{ prototype.current.path }}/store-details" method="post">
 
-<!-- Address -->
-<div class="form-group">
-  <label class="form-label-bold" for="address">Address</label>
-  <input type="text" class="form-control" id="address">
-  <input type="text" class="form-control" id="address">
-  <input type="text" class="form-control" id="address">
-</div>
+  <!-- Full name -->
+  <div class="form-group">
+    <label class="form-label-bold" for="full-name">Full name</label>
+    <input type="text" class="form-control" id="full-name" name="full-name">
+  </div>
 
-<!-- Postcode -->
-<div class="form-group">
-  <label class="form-label-bold" for="postcode">Postcode</label>
-  <input type="text" class="form-control" id="postcode">
-</div>
+  <!-- Address -->
+  <div class="form-group">
+    <label class="form-label-bold" for="address">Address</label>
+    <input type="text" class="form-control" id="address">
+    <input type="text" class="form-control" id="address">
+    <input type="text" class="form-control" id="address">
+  </div>
 
-<!-- Date of birth -->
-<div class="form-group">
-  <fieldset>
-    <legend class="form-label-bold">Date of birth</legend>
+  <!-- Postcode -->
+  <div class="form-group">
+    <label class="form-label-bold" for="postcode">Postcode</label>
+    <input type="text" class="form-control" id="postcode">
+  </div>
 
-    <div class="form-date">
+  <!-- Date of birth -->
+  <div class="form-group">
+    <fieldset>
+      <legend class="form-label-bold">Date of birth</legend>
 
-      <p class="form-hint">For example, 31 3 1980</p>
+      <div class="form-date">
 
-      <div class="form-group form-group-day">
-        <label for="dob-day">Day</label>
-        <input class="form-control" id="dob-day" type="number" pattern="[0-9]*" min="0" max="31">
+        <p class="form-hint">For example, 31 3 1980</p>
+
+        <div class="form-group form-group-day">
+          <label for="dob-day">Day</label>
+          <input class="form-control" id="dob-day" type="number" pattern="[0-9]*" min="0" max="31">
+        </div>
+
+        <div class="form-group form-group-month">
+          <label for="dob-month">Month</label>
+          <input class="form-control" id="dob-month" type="number" pattern="[0-9]*" min="0" max="12">
+        </div>
+
+        <div class="form-group form-group-year">
+          <label for="dob-year">Year</label>
+          <input class="form-control" id="dob-year" type="number" pattern="[0-9]*" min="1900" max="2000">
+        </div>
       </div>
 
-      <div class="form-group form-group-month">
-        <label for="dob-month">Month</label>
-        <input class="form-control" id="dob-month" type="number" pattern="[0-9]*" min="0" max="12">
-      </div>
+    </fieldset>
+  </div>
 
-      <div class="form-group form-group-year">
-        <label for="dob-year">Year</label>
-        <input class="form-control" id="dob-year" type="number" pattern="[0-9]*" min="1900" max="2000">
-      </div>
-    </div>
+  <!-- National Insurance number -->
+  <div class="form-group">
+    <label class="form-label-bold" for="ni-number">
+      National Insurance number
+      <span class="form-hint">
+        For example, 'VO 12 34 56 D'.
+      </span>
+    </label>
+    <input type="text" class="form-control" id="ni-number">
+  </div>
 
-  </fieldset>
-</div>
+  <button type="submit" class="button">Next</button>
 
-<!-- National Insurance number -->
-<div class="form-group">
-  <label class="form-label-bold" for="ni-number">
-    National Insurance number
-    <span class="form-hint">
-      For example, 'VO 12 34 56 D'.
-    </span>
-  </label>
-  <input type="text" class="form-control" id="ni-number">
-</div>
-
-<a href="enter-unique-id" class="button">Next</a>
+</form>
 
 {% endblock %}
 

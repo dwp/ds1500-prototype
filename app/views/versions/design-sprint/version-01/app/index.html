@@ -19,37 +19,53 @@
   <p class="bold-large">
     You can either:
   </p>
+  
+  <form action="{{ prototype.current.path }}/your-details" method="post">
+    
+    <input type="hidden" name="journey" value="dynamic">
 
-  <h2 class="heading-medium">
-    Let us get it direct from NHS
-  </h2>
+    <h2 class="heading-medium">
+      Let us get it direct from NHS
+    </h2>
 
-  <p>
-    By providing some details and giving your permission your fitnote can be obtained automatically from the NHS.
-  </p>
+    <p>By providing some details and giving your permission your fitnote can be obtained automatically from the NHS.</p>
 
-  <a href="your-details" class="button">Go for it</a>
+    <button type="submit" class="button">Go for it</button>
+  
+  </form>
+  
+  <form action="{{ prototype.current.path }}/your-details" method="post">
+    
+    <input type="hidden" name="journey" value="manual">
+    
+    <h2 class="heading-medium">
+      Enter fitnote online
+    </h2>
 
-  <h2 class="heading-medium">
-    Enter fitnote online
-  </h2>
+    <p>
+      Enter a few details from your paper note online and we can get the rest.
+    </p>
 
-  <p>
-    Enter a few details from your paper note online and we can get the rest.
-  </p>
+    <button type="submit" class="button">Start!</button>
+    
+  </form>
+  
+  <form action="{{ prototype.current.path }}/scan-barcode" method="post">
+    
+    <input type="hidden" name="journey" value="barcode">
 
-  <a href="your-details" class="button">Start!</a>
+    <h2 class="heading-medium">
+      Scan the barcode using your mobile device
+    </h2>
 
-  <h2 class="heading-medium">
-    Scan the barcode using your mobile device
-  </h2>
+    <p>
+      Use the camera on your mobile device to scan the barcode on your paper note and we can get the information instantly.
+    </p>
 
-  <p>
-    Use the camera on your mobile device to scan the barcode on your paper note and we can get the information instantly.
-  </p>
+    <button type="submit" class="button">Start</button>
 
-  <a href="scan-barcode" class="button">Start</a>
-
+  </form>
+  
   <h2 class="heading-medium">
     Post your fitnote
   </h2>
