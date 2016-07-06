@@ -5,7 +5,7 @@
 module.exports = {
 
   // Service name used in header. Eg: 'Renew your passport'
-  serviceName: "Service name goes here",
+  serviceName: "Provide a fitnote",
 
   // Default port that prototype runs on
   port: '3000',
@@ -32,12 +32,11 @@ module.exports = {
       __dirname + '/views/versions/**/version_routes.js'
     ]
   },
-  
+
   // service design stages with iterations (used to generate automatic directory)
   stages: ['design-sprint'],
-  
+
   // name of the version specific routes file
   versionRoutesFile: 'version_routes.js'
 
 };
-	

@@ -1,0 +1,53 @@
+{% set page = {
+  title: 'index',
+  dev: true,
+  secondary: true,
+  html_classes: ['page-class']
+} %}
+
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+  <h1 class="heading-xlarge">
+    Your fitnote
+  </h1>
+
+  <div class="panel panel-border-wide alert-default">
+    <p class="bold-medium">
+      You are not fit for work
+    </p>
+  </div>
+
+  <p class="bold-medium">
+    <span class="font-small">
+      Condition<br>
+    </span>
+    Stress and a lot of...
+  </p>
+
+  <p class="bold-medium">
+    <span class="font-small">
+      From<br>
+    </span>
+    4 July 2016
+  </p>
+
+  <p class="bold-medium">
+    <span class="font-small">
+      To<br>
+    </span>
+    18 July 2016
+  </p>
+
+  <p>
+    Do you want to continue and submit this?
+  </p>
+
+
+  <a href="confirmation" class="button">Yes do it</a>&nbsp;<a href="" class="button button-secondary">No way</a>
+
+
+{% endblock %}
+
+{% block secondary %}
+{% endblock %}

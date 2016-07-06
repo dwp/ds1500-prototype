@@ -1,0 +1,28 @@
+{% set page = {
+  title: 'index',
+  dev: true,
+  secondary: true,
+  html_classes: ['page-class']
+} %}
+
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+  <h1 class="heading-xlarge">
+    Request for permission
+  </h1>
+
+  <p>
+    The Department for Work and Pensions needs your permission to:
+  </p>
+
+  <p class="bold-small">
+    View your last fitnote from the National Health Service.
+  </p>
+
+  <a href="your-doctors-note" class="button">I give permission</a>
+
+{% endblock %}
+
+{% block secondary %}
+{% endblock %}

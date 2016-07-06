@@ -2,3 +2,16 @@
 @import 'bundled-styles';
 // prototype specific styles
 @import 'prototype';
+
+.alert-default {
+  border-color: $light-blue;
+  background-color: mix(white, $light-blue, 90%);
+}
+.button-secondary {
+  @include button($grey-3);
+
+  @include media (mobile) {
+    width: 100%;
+    padding: 10px 15px 10px;
+  }
+}
