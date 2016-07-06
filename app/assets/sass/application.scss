@@ -15,3 +15,23 @@
     padding: 10px 15px 10px;
   }
 }
+.govuk-box-permission {
+  @extend .govuk-box-highlight;
+  background: $govuk-blue;
+
+  .button {
+    background: $white;
+    color: $govuk-blue;
+    font-weight: bold;
+  }
+
+  img {
+    margin: 10px auto;
+    max-width: 80%;
+    width: auto;
+  }
+
+  p {
+    text-align: left;
+  }
+}

@@ -7,22 +7,37 @@
 
 {% extends page.layout | d(prototype.current.layout) %}
 
-{% block primary %}
-  <h1 class="heading-xlarge">
-    Request for permission
-  </h1>
+{% block main %}
 
-  <p>
-    The Department for Work and Pensions needs your permission to:
-  </p>
+  <div class="govuk-box-permission">
 
-  <p class="bold-small">
-    View your last fitnote from the National Health Service.
-  </p>
+    <div class="grid-row">
+      <div class="column-one-third">
 
-  <a href="your-doctors-note" class="button">I give permission</a>
+        <img src="/public/images/dwp-nhs-permission-group-2x.png" />
 
-{% endblock %}
+      </div>
+      <div class="column-two-thirds">
 
-{% block secondary %}
+        <h1 class="hidden">
+          Request for permission
+        </h1>
+
+        <p class="font-medium">
+          The Department for Work and Pensions needs your permission to connect to the National Health Service to:
+        </p>
+
+        <p class="bold-medium">
+          View your last fitnote.
+        </p>
+
+        <p>
+          <a href="your-fitnote" class="button">I give permission</a>
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+
 {% endblock %}
