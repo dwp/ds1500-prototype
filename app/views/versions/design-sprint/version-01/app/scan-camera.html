@@ -26,6 +26,9 @@
 
 {% endblock %}
 
+{#
+
+#}
 {% block body_end %}
   
   {{ super() }}
@@ -35,7 +38,7 @@
     
     var page = {
       
-      initCam: function() {
+      initCam: function(cb) {
         
         var self = this;
         
@@ -61,6 +64,10 @@
           });
         }
         
+        if(cb) {
+          cb();
+        }
+        
       },
       
       handleSnap: function handleSnap(data_uri) {
@@ -73,7 +80,19 @@
       
       init: function() {
         var self = this;
-        self.initCam();
+        self.initCam(function(){
+          
+          var $preview = $('#camera-preview');
+          var $video = $preview.find('video');
+          
+          $([$preview,$video]).each(function(index){
+            $(this).attr('height','');
+            $(this).attr('width','');
+            $(this).css('width','100%');
+            $(this).css('height','auto');
+          });
+          
+        });
       }
       
     }
