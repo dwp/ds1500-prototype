@@ -18,6 +18,7 @@
 .govuk-box-permission {
   @extend .govuk-box-highlight;
   background: $govuk-blue;
+  padding: 30px;
 
   .button {
     background: $white;

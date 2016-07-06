@@ -5,12 +5,13 @@
 @import 'prototype/grids';
 @import 'prototype/generic';
 
-.camera-preview {
+.camera-preview, #image-holder {
   display: block;
   position: relative;
   width: 100%;
-  video {
+  video, image, img {
     width: 100%;
+    height: auto;
   }
 }
 
