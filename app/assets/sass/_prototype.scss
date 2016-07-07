@@ -91,3 +91,103 @@
     }
   }
 }
+
+img {
+  max-width: 100%;
+}
+
+.alert-default {
+  border-color: $light-blue;
+  background-color: mix(white, $light-blue, 90%);
+}
+.alert-warning {
+  border-color: $red;
+  background-color: mix(white, $mellow-red, 90%);
+}
+.button-secondary {
+  @include button($grey-3);
+
+  @include media (mobile) {
+    width: 100%;
+    padding: 10px 15px 10px;
+  }
+}
+.form-ID {
+  @extend .form-date;
+//  background: $govuk-blue;
+//  margin: 15px 0;
+//  padding: 15px;
+//  
+  .form-group {
+    position: relative;
+  }
+
+  .form-group:not(:last-of-type)::after {
+    content: "-";
+    font-weight: bold;
+    display: inline;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(0.7em,-50%);
+  }
+
+//  legend {
+//    color: $white;
+//  }
+}
+.govuk-box-permission {
+  @extend .govuk-box-highlight;
+  background: $govuk-blue;
+  padding: 30px;
+
+  .button {
+    background: $white;
+    color: $govuk-blue;
+    font-weight: bold;
+  }
+
+  img {
+    margin: 10px auto;
+//    max-width: 80%;
+//    width: auto;
+  }
+
+  p {
+    text-align: left;
+  }
+}
+
+
+.note-id {
+  border: 2px solid #6f777b;
+  padding: 10px;
+  display: inline-block;
+  * {
+    box-sizing: border-box;
+  }
+  &__field {
+    display: inline-block;
+    position: relative;
+    margin-right: 1em;
+    &:after {
+      content: '-';
+      position: absolute;
+      right: -0.5em;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1000;
+    }
+    &:last-of-type {
+      margin-right: 0;
+      &:after {
+        display: none;
+      }
+    }
+  }
+  &__control {
+    border: none;
+    max-width: 100%;
+    text-transform: uppercase;
+  }
+}

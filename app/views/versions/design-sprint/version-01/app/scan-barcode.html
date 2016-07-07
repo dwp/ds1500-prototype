@@ -124,7 +124,7 @@
             progress: function(e){
                 console.log(e)
             }
-        }).then( function(d){ document.getElementById('display').innerHTML+=d.text } )
+        }).then( function(d){ console.log(d.text) } )
       },
 
       init: function() {
