@@ -191,3 +191,8 @@ img {
     text-transform: uppercase;
   }
 }
+
+.alert-success {
+  border-color: $turquoise;
+  background-color: mix(white, $turquoise, 90%);
+}

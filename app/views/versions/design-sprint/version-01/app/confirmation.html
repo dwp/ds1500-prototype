@@ -1,7 +1,7 @@
 {% set page = {
   title: 'index',
   dev: true,
-  secondary: true,
+  secondary: false,
   html_classes: ['page-class']
 } %}
 
@@ -31,14 +31,63 @@
   <p>
 
   <!-- Mobile number -->
-  <div class="form-group">
-    <label class="form-label-bold" for="mobile-number">Mobile number</label>
-    <input type="text" class="form-control" id="mobile-number">
+  <div class="mobile-capture">
+      <div class="form-group">
+        <label class="form-label-bold" for="mobile-number">Mobile number</label>
+        <input type="text" class="form-control" id="mobile-number">
+      </div>
+      <a href="/" class="button" id="mobile-submit">Send me a reminder</a>
   </div>
-
-  <a href="/" class="button">Send me a reminder</a>
+  
+  <div class="mobile-confirmation js-hidden">
+    <div class="panel panel-border-wide alert-success">
+      <p class="bold-medium">
+        You have now requested a text message reminder.
+      </p>
+      <p>
+        We will send you a text message in the next few minutes to confirm that your reminder has been set-up.
+      </p>
+      <p>
+        <a href="/">Back to the start</a>
+      </p>
+    </div>
+  </div>
 
 {% endblock %}
 
-{% block secondary %}
+{% block body_end %}
+
+  {{ super() }}
+  
+  <script type="text/javascript">
+    
+    var page = {
+      
+      handleConfirmation: function() {
+        var self = this;
+        var $confirmation = $('.mobile-confirmation'),
+            
+            $capture = $('.mobile-capture'),
+            $captureInput = $('#mobile-number'),
+            $captureButton = $('#mobile-submit');
+            
+        $captureButton.on('click', function(e){
+          $confirmation.removeClass('js-hidden');
+          $capture.addClass('js-hidden');
+          e.preventDefault();
+        })
+            
+      },
+      
+      init: function() {
+        this.handleConfirmation();
+      }
+    }
+    
+    $(function(){
+      page.init();
+    });
+    
+  </script>
+  
 {% endblock %}
