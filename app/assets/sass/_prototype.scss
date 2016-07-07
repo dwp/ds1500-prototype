@@ -131,10 +131,6 @@ img {
     right: 0;
     transform: translate(0.7em,-50%);
   }
-
-//  legend {
-//    color: $white;
-//  }
 }
 .govuk-box-permission {
   @extend .govuk-box-highlight;
@@ -158,18 +154,15 @@ img {
   }
 }
 
-
 .note-id {
   border: 2px solid #6f777b;
   padding: 10px;
-  display: inline-block;
+  // display: inline-block;
   * {
     box-sizing: border-box;
   }
   &__field {
-    display: inline-block;
     position: relative;
-    margin-right: 1em;
     &:after {
       content: '-';
       position: absolute;
@@ -179,7 +172,6 @@ img {
       z-index: 1000;
     }
     &:last-of-type {
-      margin-right: 0;
       &:after {
         display: none;
       }
@@ -189,6 +181,9 @@ img {
     border: none;
     max-width: 100%;
     text-transform: uppercase;
+    font-size: 15px;
+    text-align: center;
+    width: 100%;
   }
 }
 
