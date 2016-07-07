@@ -1,5 +1,5 @@
 module.exports = function(router, config) {
-
+  
   // routing for all pages directly below version/app/
   router.all(config.routes.step, function(req,res,next){
 

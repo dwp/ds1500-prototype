@@ -12,6 +12,7 @@ var path = require('path'),
     port = (process.env.PORT || config.port),
     packageJson = require(__dirname + '/package.json'),
     utils = require(__dirname + '/lib/utils.js'),
+    multer = require('multer'),
 
 // Grab environment variables specified in Procfile or as Heroku config vars
     releaseVersion = packageJson.version,
@@ -35,6 +36,8 @@ app.use(session({
   saveUninitialized: false,
   secret: Math.round(Math.random()*100000).toString()
 }));
+
+app.use(multer({dest:__dirname+'/file/uploads/'}).any());
 
 nunjucks.setup({
   autoescape: true,
