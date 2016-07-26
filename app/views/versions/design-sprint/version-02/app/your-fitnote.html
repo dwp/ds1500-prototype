@@ -8,6 +8,9 @@
 {% extends page.layout | d(prototype.current.layout) %}
 
 {% block primary %}
+  
+  {% include "../../../../includes/error-summary.html" %}
+
   <h1 class="heading-xlarge">
     Your fit note
   </h1>
@@ -78,22 +81,22 @@
   <form action="{{ prototype.current.path }}declaration" method="post">
 
     <!-- National Insurance number -->
-    <div class="form-group">
+    <div class="form-group" data-required data-error="Enter your nino" >
       <label class="form-label-bold" for="ni-number">
         Your NINO
         <span class="form-hint">
           For example, 'VO 12 34 56 D'.
         </span>
       </label>
-      <input type="text" class="form-control" id="ni-number">
+      <input type="text" class="form-control" id="ni-number" >
     </div>
 
     <!-- National Insurance number -->
-    <div class="form-group">
-      <label class="form-label-bold" for="mobile">
+    <div class="form-group" data-required data-error="Enter your mobile">
+      <label class="form-label-bold" for="mobile-number">
         Mobile 
       </label>
-      <input type="text" class="form-control" id="mobile-number">
+      <input type="text" class="form-control" id="mobile-number" >
     </div>
 
     <button type="submit" class="button">Next</button>
@@ -104,4 +107,12 @@
 {% endblock %}
 
 {% block secondary %}
+{% endblock %}
+
+{% block body_end %}
+
+  {{ super() }}
+  
+  <script src="/public/javascripts/validate.js"></script>
+
 {% endblock %}
