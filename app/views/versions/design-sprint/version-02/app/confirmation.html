@@ -1,0 +1,93 @@
+{% set page = {
+  title: 'index',
+  dev: true,
+  secondary: false,
+  html_classes: ['page-class']
+} %}
+
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+  <div class="govuk-box-highlight">
+    <h1 class="bold-large">
+      <span class="font-medium">
+        Your fit note has been received<br>
+      </span>
+      It’s valid until 18 July 2016
+    </h1>
+    <p></p>
+  </div>
+
+  <h2 class="heading-medium">
+    What happens next
+  </h2>
+
+  <p>
+    You’ll need to provide another fit note by 19 July 2016 if you’re not able to work.
+  </p>
+
+  <p>
+    Enter your mobile number to receive a reminder by text message.
+  <p>
+
+  <!-- Mobile number -->
+  <div class="mobile-capture">
+      <div class="form-group">
+        <label class="form-label-bold" for="mobile-number">Mobile number</label>
+        <input type="text" class="form-control" id="mobile-number">
+      </div>
+      <a href="/" class="button" id="mobile-submit">Send me a reminder</a>
+  </div>
+  
+  <div class="mobile-confirmation js-hidden">
+    <div class="panel panel-border-wide alert-success">
+      <p class="bold-medium">
+        You have now requested a text message reminder.
+      </p>
+      <p>
+        We will send you a text message in the next few minutes to confirm that your reminder has been set-up.
+      </p>
+      <p>
+        <a href="/">Back to the start</a>
+      </p>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block body_end %}
+
+  {{ super() }}
+  
+  <script type="text/javascript">
+    
+    var page = {
+      
+      handleConfirmation: function() {
+        var self = this;
+        var $confirmation = $('.mobile-confirmation'),
+            
+            $capture = $('.mobile-capture'),
+            $captureInput = $('#mobile-number'),
+            $captureButton = $('#mobile-submit');
+            
+        $captureButton.on('click', function(e){
+          $confirmation.removeClass('js-hidden');
+          $capture.addClass('js-hidden');
+          e.preventDefault();
+        })
+            
+      },
+      
+      init: function() {
+        this.handleConfirmation();
+      }
+    }
+    
+    $(function(){
+      page.init();
+    });
+    
+  </script>
+  
+{% endblock %}

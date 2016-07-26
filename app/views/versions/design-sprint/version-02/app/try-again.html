@@ -1,0 +1,143 @@
+{% set page = {
+  title: 'index',
+  dev: true,
+  secondary: true,
+  html_classes: ['page-class']
+} %}
+
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+
+<form action="{{ prototype.current.path }}your-fitnote" method="post" enctype="multipart/form-data">
+
+  <h1 class="heading-xlarge">
+    Unable to read fit note. Try again.
+  </h1>
+
+  <img src="/public/images/guide-barcode-scan-2x.png" width="50%" />
+
+  <div class="preview-box">
+    <div class="preview-box__inner">
+      <div class="preview-box__image">
+        <div class="preview-box__image__thumb">
+          <div id="image-holder" class="preview-box__image__thumb__img">
+            <img src="" alt="" class="preview-image preview-init" />
+          </div>
+        </div>
+      </div>
+      <div class="preview-box__ui">
+        <p>Is the fit note fully visible?</p>
+        <div class="grid">
+          <div class="grid__item one-half">
+            <a href="#" class="preview-retry button" style="width: 100%;">No - Retry</a>
+          </div>
+          <div class="grid__item one-half">
+            <a href="{{ prototype.current.path }}your-fitnote" class="preview-send button" style="width: 100%;">Yes - send it</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <div class="form-group">
+    <a href="#" class="button fake-button" id="fake-input" style="width:100%;">Scan your fit note</a>
+  </div>
+
+  <div class="form-group visuallyhidden">
+    <label class="form-label-bold" for="scan-barcode">Scan barcode</label>
+    <input type="file" accept="image/*" class="button" id="scan-barcode" name="scan-barcode">
+  </div>
+
+</form>
+
+<div id="display"></div>
+
+{% endblock %}
+
+{% block body_end %}
+
+  {{ super() }}
+  
+  <script src="http://tenso.rs/tesseract.js"></script>
+
+  <script language="JavaScript">
+
+    var page = {
+      
+      file: '',
+
+      showFile: function() {
+        var $preview = $('.preview-image');
+        var file    = document.querySelector('input[type=file]').files[0];
+        var reader  = new FileReader();
+
+        reader.addEventListener("load", function () {
+          self.file = reader.result;
+          $preview.attr('src',self.file);
+        }, false);
+
+        if (file) {
+          // console.log(reader.readAsDataURL(file));
+          // reader.readAsDataURL(file);
+          reader.readAsDataURL(file);
+        }
+      },
+
+      handleUpload: function() {
+
+        var self = this;
+        var $input = $('#scan-barcode');
+        var $fakeInput = $('#fake-input');
+        var $previewImage = $('.preview-image');
+        var $previewBox = $('.preview-box');
+        var $previewSend = $('.preview-send');
+        var $previewRetry = $('.preview-retry');
+        var reader;
+
+        if($input.length) {
+          
+          $input.on('change',function(e){
+            self.showFile();
+            $previewImage.removeClass('visuallyhidden');
+            $previewBox.addClass('active');
+          }); 
+
+          $fakeInput.on('click', function(e){
+            $input.trigger('click');
+            e.preventDefault();
+          });
+
+          $previewRetry.on('click', function(e){
+            $input.trigger('click');
+            e.preventDefault();
+          })
+
+        }
+
+      },
+      
+      demo: function() {
+        var img = document.querySelector('img.preview-image');
+        Tesseract.recognize(img,{
+            progress: function(e){
+                console.log(e)
+            }
+        }).then( function(d){ console.log(d.text) } )
+      },
+
+      init: function() {
+        var self = this;
+        self.handleUpload();
+      }
+
+    }
+
+    $(function(){
+      page.init();
+    });
+
+	</script>
+
+{% endblock %}

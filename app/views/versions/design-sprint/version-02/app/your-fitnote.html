@@ -1,0 +1,107 @@
+{% set page = {
+  title: 'index',
+  dev: true,
+  secondary: true,
+  html_classes: ['page-class']
+} %}
+
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+  <h1 class="heading-xlarge">
+    Your fit note
+  </h1>
+
+  <p class="bold-medium">
+    <span class="font-small">
+      Patient's name<br>
+    </span>
+    Joe bloggs
+  </p>
+
+  <p class="bold-medium">
+    <span class="font-small">
+      Because of the following condition(s)<br>
+    </span>
+    Back pain
+  </p>
+
+  <div class="panel panel-border-wide alert-default">
+    <p class="bold-medium">
+      You are not able to work
+    </p>
+  </div>
+
+  <p class="bold-medium">
+    <span class="font-small">
+      This will be the case for<br>
+    </span>
+    2 weeks
+  </p>
+
+  <p class="bold-medium">
+    <span class="font-small">
+      From<br>
+    </span>
+    4 July 2016
+  </p>
+
+  <p class="bold-medium">
+    <span class="font-small">
+      To<br>
+    </span>
+    18 July 2016
+  </p>
+
+  <p class="bold-medium">
+    <span class="font-small">
+      Doctor's address<br>
+    </span>
+    The Grove Surgery<br>
+    Thornhill Street<br>
+    Wakefield<br>
+    WF1 1PG
+  </p>
+
+  <p class="bold-medium">
+    <span class="font-small">
+      Your address<br>
+    </span>
+    First line<br>
+    Second line<br>
+    City<br>
+    Postcode
+  </p>
+
+  <p>Is this correct? Yes/No</p>
+
+  <form action="{{ prototype.current.path }}declaration" method="post">
+
+    <!-- National Insurance number -->
+    <div class="form-group">
+      <label class="form-label-bold" for="ni-number">
+        Your NINO
+        <span class="form-hint">
+          For example, 'VO 12 34 56 D'.
+        </span>
+      </label>
+      <input type="text" class="form-control" id="ni-number">
+    </div>
+
+    <!-- National Insurance number -->
+    <div class="form-group">
+      <label class="form-label-bold" for="mobile">
+        Mobile 
+      </label>
+      <input type="text" class="form-control" id="mobile-number">
+    </div>
+
+    <button type="submit" class="button">Next</button>
+  
+  </form>
+
+
+{% endblock %}
+
+{% block secondary %}
+{% endblock %}
