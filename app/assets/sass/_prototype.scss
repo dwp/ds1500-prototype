@@ -160,10 +160,24 @@ img {
     text-align: left;
   }
 }
-.govuk-box-review {
-  border: 1px solid $grey-2;
+.photo-upload-example {
+  overflow: hidden;
+  padding: 20px;
   background: $grey-4;
-  padding: 5px;
+
+  img {
+    float: right;
+    width: 340px;
+
+    @media (max-width: 1010px) {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+
+  p {
+    margin-right: 20px;
+  }
 }
 
 .note-id {
