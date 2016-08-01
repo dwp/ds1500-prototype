@@ -12,18 +12,10 @@
   {% include "../../../../includes/error-summary.html" %}
 
   <h1 class="heading-xlarge">
-    Your fit note
+    Your details
   </h1>
 
-  <form action="{{ prototype.current.path }}declaration" method="post">
-
-    <div class="form-group">
-      <label class="form-label-bold" for="ni-number">
-        Photo taken
-      </label>
-      <img class="govuk-box-review" src="/public/images/fitnote-example-2x.jpg" alt="" width="360px" />
-    </div>
-
+  <form action="{{ prototype.current.path }}complete" method="post">
 
     <!-- National Insurance number -->
     <div class="form-group" data-required data-error="Enter your National Insurance number" >
