@@ -117,7 +117,7 @@ img {
 //  background: $govuk-blue;
 //  margin: 15px 0;
 //  padding: 15px;
-//  
+//
   .form-group {
     position: relative;
   }
@@ -152,6 +152,13 @@ img {
   p {
     text-align: left;
   }
+}
+.govuk-box-highlight {
+  margin: 1em 0 1em -2em;
+  padding: 2em 2em 1em;
+  color: #fff;
+  background: #28a197;
+  text-align: left;
 }
 
 .note-id {
@@ -190,4 +197,61 @@ img {
 .alert-success {
   border-color: $turquoise;
   background-color: mix(white, $turquoise, 90%);
+}
+
+// To-do pattern
+ul.completed > li {
+  margin: 10px 0;
+  padding: 20px 15px;
+  background: #28a197;
+  /* Fallback for older browsers without RGBA-support */
+  background: rgba(40, 161, 151, 0.25);
+  border-left: 6px solid #28A197;
+  box-sizing: border-box;
+  display: block;
+}
+
+ul.todo > li {
+  margin: 10px 0;
+  padding: 20px 15px;
+  border-left: 5px solid $black;
+  border-bottom: 1px solid $border-colour;
+  background-color: $highlight-colour;
+  box-sizing: border-box;
+  display: block;
+}
+
+ul.todo > li > a {
+  text-decoration: none;
+}
+ul.todo > li > a:hover {
+  text-decoration: underline;
+}
+ul.todo > li ul.todo-tagged li {
+  @include core-16;
+  margin: 0 5px 5px 0;
+  padding: 0.5rem;
+  color: $secondary-text-colour;
+  text-align: center;
+  white-space: nowrap;
+  display: inline-block;
+}
+ul.todo > li ul.todo-tagged li.todo-assigned {
+  background: $secondary-text-colour;
+  color: $highlight-colour;
+}
+ul.todo > li a span, ul.todo > li span, ul.completed > li span {
+  @include core-16;
+  color: $secondary-text-colour;
+  display: block;
+}
+ul.todo > li.overdue {
+  border-left: 5px solid $error-colour;
+
+  a span {
+    color: $error-colour;
+  }
+}
+ul.completed > li span {
+  color: #28A197;
 }
