@@ -132,6 +132,13 @@ img {
     transform: translate(0.7em,-50%);
   }
 }
+.govuk-box-highlight {
+  margin: 1em 0 1em -2em;
+  padding: 2em 2em 1em;
+  color: #fff;
+  background: #28a197;
+  text-align: left;
+}
 .govuk-box-permission {
   @extend .govuk-box-highlight;
   background: $govuk-blue;
@@ -153,12 +160,10 @@ img {
     text-align: left;
   }
 }
-.govuk-box-highlight {
-  margin: 1em 0 1em -2em;
-  padding: 2em 2em 1em;
-  color: #fff;
-  background: #28a197;
-  text-align: left;
+.govuk-box-review {
+  border: 1px solid $grey-2;
+  background: $grey-4;
+  padding: 5px;
 }
 
 .note-id {
