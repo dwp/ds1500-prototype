@@ -1,0 +1,32 @@
+{% set page = {
+  title: 'index',
+  dev: true,
+  secondary: true,
+  html_classes: ['page-class']
+} %}
+
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+<h1 class="heading-large">
+  Please wait...
+</h1>
+
+<p>We are checking the details of your fit note.</p>
+
+
+{% endblock %}
+
+{% block body_end %}
+
+  {{ super() }}
+
+  <script language="JavaScript">
+
+    setTimeout(function(){
+      window.location = 'your-fitnote'
+    }, 3000)
+
+  </script>
+
+{% endblock %}
