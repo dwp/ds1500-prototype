@@ -17,10 +17,18 @@
 
   <form action="{{ prototype.current.path }}declaration" method="post">
 
-    <!-- National Insurance number -->
-    <div class="form-group" data-required data-error="Enter your nino" >
+    <div class="form-group">
       <label class="form-label-bold" for="ni-number">
-        Your NINO
+        Photo taken
+      </label>
+      <img class="govuk-box-review" src="/public/images/fitnote-example-2x.jpg" alt="" width="360px" />
+    </div>
+
+
+    <!-- National Insurance number -->
+    <div class="form-group" data-required data-error="Enter your National Insurance number" >
+      <label class="form-label-bold" for="ni-number">
+        National Insurance number
         <span class="form-hint">
           For example, 'VO 12 34 56 D'.
         </span>
@@ -28,15 +36,22 @@
       <input type="text" class="form-control" id="ni-number" >
     </div>
 
-    <!-- National Insurance number -->
-    <div class="form-group" data-required data-error="Enter your mobile">
+    <!-- Mobile phone number -->
+    <div class="form-group" data-required data-error="Enter your mobile phone number">
       <label class="form-label-bold" for="mobile-number">
-        Mobile
+        Mobile number
       </label>
       <input type="text" class="form-control" id="mobile-number" >
     </div>
 
-    <button type="submit" class="button">Next</button>
+    <div class="panel panel-border-narrow">
+      <p>
+        Your mobile phone number will be used for..
+      </p>
+    </div>
+
+
+    <button type="submit" class="button">Continue</button>
 
   </form>
 

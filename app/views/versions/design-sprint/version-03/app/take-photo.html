@@ -11,11 +11,24 @@
 
 <form action="{{ prototype.current.path }}please-wait" method="post" enctype="multipart/form-data">
 
-  <h1 class="heading-xlarge">
-    Take picture of your fitnote
+  <h1 class="heading-large">
+    Take a photo of your fit note
   </h1>
 
-  <img src="/public/images/guide-barcode-scan-2x.png" width="50%" />
+  <img src="/public/images/guide-fitnote-photo-2x.png" width="50%" />
+
+  <ul class="list list-bullet">
+    <li>Place your paper fit note face up on a flat surface</li>
+    <li>Ensure the area is well lit</li>
+    <li>Rotate your device</li>
+    <li>Ensure all four corners of the fit note are inside the viewport</li>
+  </ul>
+
+  <div class="panel panel-border-narrow">
+    <p>
+      Only photos that are sharp, clear and contain all four corners of the fit note can be accepted.
+    </p>
+  </div>
 
   <div class="preview-box">
     <div class="preview-box__inner">
@@ -27,13 +40,13 @@
         </div>
       </div>
       <div class="preview-box__ui">
-        <p>Is the barcode fully visible?</p>
+        <p class="bold-small">Is the photo sharp, clear and contains all four corners of the fit note?</p>
         <div class="grid">
           <div class="grid__item one-half">
             <a href="#" class="preview-retry button" style="width: 100%;">No - Retry</a>
           </div>
           <div class="grid__item one-half">
-            <a href="{{ prototype.current.path }}please-wait" class="preview-send button" style="width: 100%;">Yes - send it</a>
+            <a href="{{ prototype.current.path }}please-wait" class="preview-send button" style="width: 100%;">Yes - Continue</a>
           </div>
         </div>
       </div>
@@ -42,7 +55,7 @@
   <br>
 
   <div class="form-group">
-    <a href="#" class="button fake-button" id="fake-input" style="width:100%;">Scan your fit note</a>
+    <a href="#" class="button fake-button" id="fake-input">Take photo</a>
   </div>
 
   <div class="form-group visuallyhidden">

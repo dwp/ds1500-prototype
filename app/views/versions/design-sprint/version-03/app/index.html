@@ -17,17 +17,17 @@
   </p>
 
   <p>
-    You can use this service to send a fitnote to DWP to support you benefit claim
+    You can use this service to send a fit note to DWP to support your benefit claim
   </p>
 
   <p>Before you start you will need</p>
 
   <ul class="list list-bullet">
-    <li>Your fit note</li>
-    <li>Your NINO</li>
+    <li>Your paper fit note</li>
+    <li>Your National Insurance number</li>
   </ul>
 
-  <form action="{{ prototype.current.path }}/scan-barcode" method="post">
+  <form action="{{ prototype.current.path }}/take-photo" method="post">
 
     <input type="hidden" name="journey" value="dynamic">
 
