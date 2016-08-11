@@ -1,0 +1,82 @@
+{% set page = {
+  title: 'index',
+  dev: true,
+  secondary: true,
+  html_classes: ['page-class']
+} %}
+
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+
+  {% include "../../../../includes/error-summary.html" %}
+
+  <h1 class="heading-xlarge">
+    Your details
+  </h1>
+
+  <form action="{{ prototype.current.path }}complete" method="post">
+
+    <!-- National Insurance number -->
+    <div class="form-group" data-required data-error="Enter your National Insurance number" >
+      <label class="form-label-bold" for="ni-number">
+        National Insurance number
+        <span class="form-hint">
+          For example, 'VO 12 34 56 D'.
+        </span>
+      </label>
+      <input type="text" class="form-control" id="ni-number" >
+    </div>
+
+    <!-- Mobile phone number -->
+    <div class="form-group" data-required data-error="Enter your mobile phone number">
+      <label class="form-label-bold" for="mobile-number">
+        Mobile number
+      </label>
+      <input type="text" class="form-control" id="mobile-number" >
+    </div>
+
+
+    <div class="form-group">
+      <label class="form-label-bold">
+          Home Address
+      </label>
+      <div data-required data-error="Enter your first line of address">
+        <label class="form-label" for="first-Line-Address">
+          Number and Street/Building Name
+        </label>
+        <input type="text" class="form-control" id="first-Line-Address">
+      </div>
+
+      <div data-required data-error="Enter the town or city of your address">
+        <label class="form-label" for="town-City">
+          Town or City
+        </label>
+        <input type="text" class="form-control" id="town-City">
+      </div>
+
+      <div data-required data-error="Enter your postcode">
+        <label class="form-label" for="postcode">
+          Postcode
+        </label>
+        <input type="text" class="form-control" id="postcode">
+      </div>
+  </div>
+
+      <button type="submit" class="button">Continue</button>
+
+  </form>
+
+
+{% endblock %}
+
+{% block secondary %}
+{% endblock %}
+
+{% block body_end %}
+
+  {{ super() }}
+
+  <script src="/public/javascripts/validate.js"></script>
+
+{% endblock %}
