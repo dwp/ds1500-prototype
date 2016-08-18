@@ -1,0 +1,77 @@
+{% set page = {
+  title: 'index',
+  dev: true,
+  secondary: true,
+  html_classes: ['page-class']
+} %}
+
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+
+  {% include "../../../../includes/error-summary.html" %}
+
+  <h1 class="heading-xlarge">
+    Your details
+  </h1>
+
+  <form action="{{ prototype.current.path }}review" method="post">
+
+    <!-- National Insurance number -->
+    <div class="form-group" data-required data-error="Enter your National Insurance number" >
+      <label class="form-label-bold" for="niNumber">
+        National Insurance number
+        <span class="form-hint">
+          For example, 'VO 12 34 56 D'.
+        </span>
+      </label>
+      <input type="text" class="form-control" name="niNumber" id="niNumber" value="">
+    </div>
+
+    <!-- Mobile phone number -->
+    <div class="form-group" data-required data-error="Enter your mobile phone number">
+      <label class="form-label-bold" for="mobileNumber">
+        Mobile number
+      </label>
+      <input type="text" class="form-control" name="mobileNumber" id="mobileNumber" value="">
+    </div>
+
+    <legend class="heading-medium">Home address</legend>
+
+    <div class="form-group">
+      <label class="form-label" for="address-a">House or flat number and street</label>
+      <input type="text" name="address" id="address-a" class="form-control" value="">
+      <input type="text" name="address" id="address-b" class="form-control" value="">
+    </div>
+
+    <div class="form-group" data-required data-error="Enter your town or city">
+      <label for="town" class="form-label">Town or city</label>
+      <input type="text" name="town" id="town" class="form-control" value="">
+    </div>
+
+    <div class="form-group" data-required data-error="Enter your postcode">
+      <label for="postCode" class="form-label">Postcode</label>
+      <input type="text" name="postCode" id="postCode" class="form-control" value="">
+    </div>
+
+    <!-- Primary buttons, secondary links -->
+    <div class="form-group">
+        <input type="submit" class="button" value="Continue">
+        <!--a href="overview">I do not agree - leave now</a-->
+    </div>
+
+  </form>
+
+
+{% endblock %}
+
+{% block secondary %}
+{% endblock %}
+
+{% block body_end %}
+
+  {{ super() }}
+
+  <script src="/public/javascripts/validate.js"></script>
+
+{% endblock %}
