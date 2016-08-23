@@ -37,7 +37,23 @@ app.use(session({
   secret: Math.round(Math.random()*100000).toString()
 }));
 
-app.use(multer({dest:__dirname+'/file/uploads/'}).any());
+// app.use(multer({dest:__dirname+'/file/uploads/'}).any());
+
+var storage = multer.diskStorage({
+   destination : function(req, file, callback) {
+       callback(null, __dirname + '/file/uploads/');
+   },
+   filename : function(req, file, callback) {
+       callback(null, 'dummy-image' + path.extname(file.originalname));
+   }
+});
+
+//Store image using Multer
+//userPhoto is HTML form file name.
+app.use (multer({storage : storage}).any());
+
+
+
 
 nunjucks.setup({
   autoescape: true,
@@ -46,7 +62,7 @@ nunjucks.setup({
 }, app);
 
 nunjucks.ready(function(nj) {
-  
+
   // require core and custom filters, merges to one object
   // and then add the methods to nunjucks env obj
   var coreFilters = require(__dirname + '/lib/core_filters.js')(nj, app),
@@ -55,7 +71,7 @@ nunjucks.ready(function(nj) {
   Object.keys(filters).forEach(function(filterName) {
     nj.addFilter(filterName, filters[filterName]);
   });
-  
+
   /**
    * allow to declaratively to add something globally
    * @method addFilter
@@ -65,23 +81,23 @@ nunjucks.ready(function(nj) {
 	nj.addFilter('__setglobal__', function(v, k) {
 		nj.addGlobal(k, v);
 	});
-  
+
   // handle adding auto data storage to views
   app.use(/^\/([^.]+)$/,function(req,res,next){
     /**
-     * when called will return the value from session object of the key 
+     * when called will return the value from session object of the key
      * ('name') that's passed in
      * @method addGlobal
-     * @param  {string}  "getValue"        name of global function to 
+     * @param  {string}  "getValue"        name of global function to
      *                                     be added
-     *                                     
-     * @param  {function}  function('name' key to be looked up from the 
+     *
+     * @param  {function}  function('name' key to be looked up from the
      *                                     session object)
      */
     nj.addGlobal("getValue", function(name) {
       return req.session.data[name];
     });
-    
+
     /**
      * makes the response locals available to templates
      * @method addGlobal
@@ -89,12 +105,12 @@ nunjucks.ready(function(nj) {
      * @param  {object}  res.locals   the response locals object
      */
     nj.addGlobal("__locals__", res.locals);
-    
+
     /**
      * when called with return checked if the input 'name' contains the 'value' passed in
      * @method addGlobal
      * @param  {string}  "checked"      name of the global function to be added
-     * @param  {function}  function(name, value) 
+     * @param  {function}  function(name, value)
      */
     nj.addGlobal("isChecked",function(name, value){
         var storedValue = nj.globals.getValue(name);
@@ -105,12 +121,12 @@ nunjucks.ready(function(nj) {
             return (value == storedValue ? "checked" : "");
           }
         } else {
-          return ""  
+          return ""
         }
     });
 
     next();
-    
+
   });
 
   // Authenticate against the environment-provided credentials, if running
@@ -124,6 +140,7 @@ nunjucks.ready(function(nj) {
   app.use('/public', express.static(__dirname + '/govuk_modules/govuk_template/assets'));
   app.use('/public', express.static(__dirname + '/govuk_modules/govuk_frontend_toolkit'));
   app.use('/public/images/icons', express.static(__dirname + '/govuk_modules/govuk_frontend_toolkit/images'));
+  app.use('/public', express.static(__dirname + '/file/uploads'));
 
   // Elements refers to icon folder instead of images folder
   app.use(favicon(path.join(__dirname, 'govuk_modules', 'govuk_template', 'assets', 'images','favicon.ico')));
@@ -161,7 +178,7 @@ nunjucks.ready(function(nj) {
     // store original render function
     var _render = res.render;
 
-    // new render function 
+    // new render function
     res.render = function(view, options, callback){
 
       _render.call(this, view, options, function(err, output){
