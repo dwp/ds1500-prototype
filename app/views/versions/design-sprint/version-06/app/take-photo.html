@@ -2,6 +2,9 @@
   title: 'index',
   dev: true,
   secondary: true,
+  primary: {
+    col: ['full']
+  },
   html_classes: ['page-class']
 } %}
 
@@ -11,32 +14,49 @@
 
 <form action="{{ prototype.current.path }}please-wait" method="post" enctype="multipart/form-data">
 
-  <h1 class="heading-large">
-    Take a photo of your paper form
-  </h1>
+  <div class="photo-guide">
 
-  <div class="photo-upload-example">
-    <img src="/public/images/fitnote-example-left-side.jpg" alt="" />
-    <h2 class="bold-small">
-      Example photo
-    </h2>
-    <p>You only need to take a photo of the left side of the form
-    </p>
+    <h1 class="bold-large">
+      Take a photo of your paper form
+    </h1>
+
+    <div class="grid-row">
+      <div class="column-half">
+
+        <ol class="list list-number">
+          <li>Place your paper form face up on a flat surface like a table or the floor</li>
+          <li>Make sure the area is well lit</li>
+          <li>Hold your phone directly above the form</li>
+        </ol>
+
+      </div>
+      <div class="column-half">
+
+        <img src="/public/images/guideline-photo-angle@2x.png" alt="" />
+
+      </div>
+    </div>
+
+    <div class="grid-row">
+      <div class="column-half">
+
+        <ol class="list list-number" start="4">
+          <li>Make sure all of the left side of the form is in the photo</li>
+        </ol>
+
+      </div>
+      <div class="column-half">
+
+        <img src="/public/images/guideline-photo-crop@2x.png" alt="" />
+
+      </div>
+    </div>
+
+    <div class="form-group">
+      <a href="#" class="button fake-button" id="fake-input">Take photo</a>
+    </div>
 
   </div>
-
-  <!-- <img src="/public/images/guide-fitnote-photo-2x.png" width="50%" /> -->
-
-  <h2 class="heading-small">
-    Instructions
-  </h2>
-
-  <ul class="list list-number">
-    <li>Place your paper form face up on a flat surface like a table or the floor</li>
-    <li>Make sure the area is well lit</li>
-    <li>Hold your phone directly above the form</li>
-    <li>Make sure all of the left side of the form is in the photo</li>
-  </ul>
 
   <div class="preview-box">
     <div class="preview-box__inner">
@@ -62,10 +82,6 @@
     </div>
   </div>
   <br>
-
-  <div class="form-group">
-    <a href="#" class="button fake-button" id="fake-input">Take photo</a>
-  </div>
 
   <div class="form-group visuallyhidden">
     <label class="form-label-bold" for="scan-barcode">Scan barcode</label>
