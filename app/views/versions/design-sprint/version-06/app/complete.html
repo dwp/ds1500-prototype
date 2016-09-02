@@ -1,0 +1,82 @@
+{% set page = {
+  title: 'index',
+  dev: true,
+  secondary: false,
+  html_classes: ['page-class']
+} %}
+
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+  <div class="govuk-box-highlight">
+    <h1 class="bold-xlarge">
+      <span class="font-medium">
+      </span>
+      Your Statement of fitness to work has been sent
+    </h1>
+    <p></p>
+  </div>
+
+  <h2 class="heading-medium">
+    What happens next
+  </h2>
+
+  <p>
+    We will send you an SMS to confirm receipt of your Statement of fitness to work and remind you when it's time to send another.
+  <p>
+
+  <h2 class="heading-medium">
+    Things you need to-do
+  </h2>
+
+  <h3 class="heading-small">If you are still unfit for work:</h3>
+
+  <ul class="todo">
+    <li style="background-color:#fff;border-bottom:none;">
+      Visit your doctor to request a new Statement of fitness to work<span>before this one expires</span>
+    </li>
+    <li>
+      <a href="https://dwp-designsprint.herokuapp.com/versions/design-sprint/version-01/app/index">
+          Send us another Statement of fitness to work<span>to continue receiving benefits</span>
+      </a>
+    </li>
+  </ul>
+
+{% endblock %}
+
+{% block body_end %}
+
+  {{ super() }}
+
+  <script type="text/javascript">
+
+    var page = {
+
+      handleConfirmation: function() {
+        var self = this;
+        var $confirmation = $('.mobile-confirmation'),
+
+            $capture = $('.mobile-capture'),
+            $captureInput = $('#mobile-number'),
+            $captureButton = $('#mobile-submit');
+
+        $captureButton.on('click', function(e){
+          $confirmation.removeClass('js-hidden');
+          $capture.addClass('js-hidden');
+          e.preventDefault();
+        })
+
+      },
+
+      init: function() {
+        this.handleConfirmation();
+      }
+    }
+
+    $(function(){
+      page.init();
+    });
+
+  </script>
+
+{% endblock %}
