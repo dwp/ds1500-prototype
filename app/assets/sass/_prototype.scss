@@ -5,6 +5,13 @@
 @import 'prototype/grids';
 @import 'prototype/generic';
 
+#global-header-bar {
+  display: none;
+}
+
+#global-header #logo {
+  font-size: 18px;
+}
 
 .column-full {
   @include grid-column(1 / 1);
@@ -169,16 +176,23 @@ img {
   background-color: $govuk-blue;
   color: $white;
   margin-top: 1.25em;
-  padding: 60px;
+  padding: 60px 60px 2px 60px;
 
   @include media (mobile) {
-    padding: 30px;
+    padding: 30px 30px 2px 30px;
   }
 
   .button {
     background: $white;
     color: $govuk-blue;
     font-weight: bold;
+    &:hover {
+      background: $grey-4;
+    }
+    @include media (mobile) {
+      width: 100%;
+      padding: 10px 15px 10px;
+    }
   }
 
   .form-group {
