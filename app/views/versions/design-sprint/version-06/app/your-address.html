@@ -1,0 +1,78 @@
+{% set page = {
+  title: 'index',
+  dev: true,
+  secondary: true,
+  html_classes: ['page-class']
+} %}
+
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+
+  {% include "../../../../includes/error-summary.html" %}
+
+  <h1 class="heading-large">
+  </h1>
+
+  <form action="{{ prototype.current.path }}review" method="post">
+
+    <div class="form-group">
+      <fieldset class="inline">
+        <legend class="heading-medium">
+          Is the home address on your sick note right?
+        </legend>
+       <label class="block-label" for="radio-inline-1a">
+         <input id="radio-inline-1a" type="radio" name="radio-inline-group" value="Yes">
+          Yes
+        </label>
+       <label class="block-label" for="radio-inline-2a" data-target="no">
+          <input id="radio-inline-2a" type="radio" name="radio-inline-group" value="No">
+          No
+        </label>
+      </fieldset>
+    </div>
+
+     <div class="form-group">
+       <div class="panel panel-border-narrow js-hidden" id="no">
+         <legend class="heading-medium">Home address</legend>
+
+         <div class="form-group">
+           <label class="form-label" for="address-a">House or flat number and street</label>
+           <input type="text" name="address" id="address-a" class="form-control" value="">
+           <input type="text" name="address" id="address-b" class="form-control" value="">
+         </div>
+
+         <div class="form-group" data-required data-error="Enter your town or city">
+           <label for="town" class="form-label">Town or city</label>
+           <input type="text" name="town" id="town" class="form-control" value="">
+         </div>
+
+         <div class="form-group" data-required data-error="Enter your postcode">
+           <label for="postCode" class="form-label">Postcode</label>
+           <input type="text" name="postCode" id="postCode" class="form-control" value="">
+         </div>
+
+       </div>
+     </div>
+
+    <!-- Primary buttons, secondary links -->
+    <div class="form-group">
+        <input type="submit" class="button" value="Continue">
+        <!--a href="overview">I do not agree - leave now</a-->
+    </div>
+
+  </form>
+
+
+{% endblock %}
+
+{% block secondary %}
+{% endblock %}
+
+{% block body_end %}
+
+  {{ super() }}
+
+  <script src="/public/javascripts/validate.js"></script>
+
+{% endblock %}
