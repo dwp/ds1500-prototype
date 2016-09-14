@@ -27,7 +27,7 @@
           </th>
 
           <th class="change-answer">
-            <a href="#">
+            <a href="take-photo">
               Change <span class="visuallyhidden">details</span>
             </a>
           </th>
@@ -36,7 +36,7 @@
       <tbody>
         <tr>
           <td colspan="3">
-            <img src="/public/dummy-image.jpg" alt="" />
+            <img width="50%" src="/public/dummy-image.jpg" alt="" />
           </td>
         </tr>
       </tbody>
@@ -51,7 +51,7 @@
           </th>
 
           <th class="change-answer">
-            <a href="#">
+            <a href="your-details">
               Change <span class="visuallyhidden">personal details</span>
             </a>
           </th>
@@ -61,12 +61,14 @@
       <tbody>
         <tr>
           <td width="40%">
-            <b>National insurance number</b>
+            <b>National Insurance number</b>
           </td>
           <td colspan="2">
             {{session.niNumber}}
           </td>
         </tr>
+        {% if session.mobileNumber == "" %}
+        {% else %}
         <tr>
           <td>
             <b>Mobile number</b>
@@ -75,6 +77,29 @@
             {{session.mobileNumber}}
           </td>
         </tr>
+        {% endif %}
+      </tbody>
+
+      {% if session.postCode == "" %}
+      {% else %}
+
+      <thead>
+        <tr>
+          <th colspan="2">
+            <h2 class="heading-medium">
+              Home address
+            </h2>
+          </th>
+
+          <th class="change-answer">
+            <a href="your-address">
+              Change <span class="visuallyhidden">personal details</span>
+            </a>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
         <tr>
           <td>
             <b>Home address</b>
@@ -89,11 +114,14 @@
         </tr>
       </tbody>
 
+      {% endif %}
+
+
     </table>
   </div>
 
   <div class="form-group">
-    <a href="complete" class="button">Complete - Send</a>
+    <a href="complete" class="button">Send</a>
   </div>
 
 {% endblock %}

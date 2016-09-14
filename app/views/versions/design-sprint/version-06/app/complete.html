@@ -10,9 +10,7 @@
 {% block primary %}
   <div class="govuk-box-highlight">
     <h1 class="bold-xlarge">
-      <span class="font-medium">
-      </span>
-      Your Statement of fitness to work has been sent
+      <img src="/public/images/icon-tick@2x.png" width="40" alt="" />Sent
     </h1>
     <p></p>
   </div>
@@ -21,11 +19,44 @@
     What happens next
   </h2>
 
-  <p>
-    We will send you an SMS to confirm receipt of your Statement of fitness to work and remind you when it's time to send another.
-  <p>
+  {% if session.mobileNumber == "" %}
 
-  <h2 class="heading-medium">
+  <p>
+    Your sick note will be processed within 24 hours.
+  </p>
+
+  <p>
+     If there's a problem you'll be contacted.
+  </p>
+
+  {% else %}
+
+  <p>
+    You'll get text messages to:
+  </p>
+
+    <ul class="list list-bullet">
+      <li>
+        tell you that your sick note's been processed
+      </li>
+      <li>
+        remind you to send another if you're still not well
+      </li>
+    </ul>
+
+    <p>
+      Your sick note will be processed within 24 hours.
+    </p>
+
+  <p>
+     If there's a problem you'll be contacted.
+  </p>
+
+  {% endif %}
+
+
+
+  <!-- <h2 class="heading-medium">
     Things you need to-do
   </h2>
 
@@ -40,7 +71,7 @@
           Send us another Statement of fitness to work<span>to continue receiving benefits</span>
       </a>
     </li>
-  </ul>
+  </ul> -->
 
 {% endblock %}
 

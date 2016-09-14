@@ -161,6 +161,12 @@ img {
   color: #fff;
   background: #28a197;
   text-align: left;
+
+  img {
+    position: relative;
+    top: 8px;
+    margin-right: 15px;
+  }
 }
 .govuk-box-permission {
   @extend .govuk-box-highlight;
@@ -209,6 +215,10 @@ img {
 
   .form-group {
     float: none;
+  }
+
+  .panel {
+    border-color: $white;
   }
 
   ol {
