@@ -9,10 +9,6 @@
   display: none;
 }
 
-#global-header #logo {
-  font-size: 18px;
-}
-
 .column-full {
   @include grid-column(1 / 1);
 }
