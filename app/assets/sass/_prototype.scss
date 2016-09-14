@@ -116,12 +116,23 @@ img {
   border-color: $red;
   background-color: mix(white, $mellow-red, 90%);
 }
-.button-secondary {
-  @include button($grey-3);
-
+.button {
   @include media (mobile) {
     width: 100%;
-    padding: 10px 15px 10px;
+    margin: 2px 0;
+    padding: 13px 15px 11px;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+.button-secondary {
+  @include button($grey-3);
+  @include media (mobile) {
+    width: 100%;
+    margin: 2px 0;
+    padding: 13px 15px 11px;
+    text-align: center;
+    font-weight: bold;
   }
 }
 .form-ID {
@@ -185,13 +196,14 @@ img {
   .button {
     background: $white;
     color: $govuk-blue;
-    font-weight: bold;
     &:hover {
       background: $grey-4;
     }
     @include media (mobile) {
       width: 100%;
-      padding: 10px 15px 10px;
+      padding: 13px 15px 11px;
+      text-align: center;
+      font-weight: bold;
     }
   }
 
