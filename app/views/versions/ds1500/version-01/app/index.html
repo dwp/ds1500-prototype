@@ -1,0 +1,76 @@
+{% set page = {
+  title: 'index',
+  dev: true,
+  secondary: true,
+  html_classes: ['page-class']
+} %}
+
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+<div class="govuk-box-highlight">
+  <h1 class="bold-large">
+    <img src="/public/images/icon-tick@2x.png" width="40" alt="" />Thank you for submitting the Doctor's Report.
+  </h1>
+  <p>
+    We have received the document and will now look at the information you have provided in support of your patient's claim.
+  </p>
+  <p>
+    If we need additional information, we will contact you.
+  </p>
+</div>
+
+<h2 class="heading-medium">
+  Things you need to do now
+</h2>
+
+<ul class="todo-list">
+  <li>
+    <a class="ds1500-download" href="#">1. Download the fee form</a>
+    <div class="task-status-banner js-hidden">
+        <strong class="task-tag done">Downloaded</strong>
+    </div>
+  </li>
+  <li>
+    <a class="ds1500-download" href="#">2. Download a PDF copy of the DS1500 form for your records</a>
+    <div class="task-status-banner js-hidden">
+        <strong class="task-tag done">Downloaded</strong>
+    </div>
+  </li>
+</ul>
+
+<h2 class="heading-medium">
+  What happens next
+</h2>
+
+<p>
+  We will pay your fee directly into your bank or building society account.
+</p>
+
+<p>
+  <a href="mailto:dwp.digitalds1500@dwp.gsi.gov.uk">Contact us</a> if you need to provide your account details.
+</p>
+
+<p>
+  <a href="ds1500-start.html">Send another report</a>
+</p>
+
+{% endblock %}
+
+{% block secondary %}
+{% endblock %}
+
+{% block body_end %}
+
+  {{ super() }}
+
+  <script type="text/javascript">
+
+  $('a.ds1500-download').on( "click", function(event) {
+    $(this).next().removeClass('js-hidden');
+    event.preventDefault;
+  });
+
+  </script>
+
+{% endblock %}

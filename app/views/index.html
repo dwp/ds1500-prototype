@@ -7,9 +7,9 @@
 {% block primary %}
 
   <h1 class="heading-xlarge">{{ serviceName }} Prototypes</h1>
-  
+
   <p>The {{ serviceName }} prototypes are developed in the various <a href="https://www.gov.uk/service-manual" title="GDS Service manaual explanation of service design phases">service design phases</a> below is a list of the prototype iterations for each phase.</p>
-  
+
   {% for stage in prototype.stages %}
 
     <h2 class="heading-medium">{{ stage | upper }}</h2>
@@ -30,5 +30,5 @@
 
   {% endfor %}
 
-  
+
 {% endblock %}

@@ -34,7 +34,7 @@ module.exports = {
   },
 
   // service design stages with iterations (used to generate automatic directory)
-  stages: ['design-sprint'],
+  stages: ['design-sprint', 'ds1500'],
 
   // name of the version specific routes file
   versionRoutesFile: 'version_routes.js'

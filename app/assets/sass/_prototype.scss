@@ -151,11 +151,11 @@ img {
   }
 }
 .govuk-box-highlight {
-  margin: 1em 0 1em -2em;
+  // margin: 1em 0 1em -2em;
   padding: 2em 2em 1em;
   color: #fff;
   background: #28a197;
-  text-align: left;
+  // text-align: left;
 
   img {
     position: relative;
@@ -280,6 +280,47 @@ img {
 }
 
 // To-do pattern
+ul.todo-list > li {
+  @extend .heading-medium;
+  margin: 0;
+  padding: 0.75em 0 0.5625em 0;
+  border-bottom: 1px solid $border-colour;
+}
+ul.todo-list > li:first-of-type {
+  border-top: 1px solid $border-colour;
+}
+ul.todo-list > li a {
+  display: inline-block;
+  text-decoration: inherit;
+  width: 60%;
+  @include media (mobile) {
+    width: 100%;
+  }
+}
+ul.todo-list > li a:hover {
+  text-decoration: underline;
+}
+
+.task-status-banner {
+  float: right;
+  @include media (mobile) {
+    float: none;
+    margin-top: 5px;
+  }
+
+}
+.task-tag {
+  margin: 0;
+  padding: 2px 5px 0;
+  @include bold-16($line-height: 20 / 16);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: $white;
+  background-color: $black;
+  vertical-align: top;
+}
+
 ul.completed > li {
   margin: 10px 0;
   padding: 20px 15px;
