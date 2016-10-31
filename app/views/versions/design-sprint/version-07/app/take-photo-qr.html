@@ -12,12 +12,12 @@
 
 {% block primary %}
 
-<form action="{{ prototype.current.path }}please-wait" method="post" enctype="multipart/form-data">
+<form action="{{ prototype.current.path }}your-details" method="post" enctype="multipart/form-data">
 
   <div class="photo-guide">
 
     <h1 class="bold-large">
-      Take a photo of your fit note
+      Take a photo of the QR code on your fit note
     </h1>
 
     <div class="grid-row">
@@ -26,28 +26,13 @@
         <ol class="list list-number">
           <li>Put your fit note on a flat surface like a table.</li>
           <li>Make sure you're in a well lit place.</li>
-          <li>Hold your phone landscape over the paper.</li>
+          <li>Make sure the QR code is clearly visible in the photo.</li>
         </ol>
 
       </div>
       <div class="column-half">
 
-        <img src="/public/images/guideline-photo-angle-white@2x.png" alt="" />
-
-      </div>
-    </div>
-
-    <div class="grid-row">
-      <div class="column-half">
-
-        <ol class="list list-number" start="4">
-          <li>Make sure the whole thing is in the photo.</li>
-        </ol>
-
-      </div>
-      <div class="column-half">
-
-        <img src="/public/images/guideline-photo-crop-landscape-white@2x.png" alt="" />
+        <img src="/public/images/guideline-qr-white@2x.png" alt="" />
 
       </div>
     </div>
@@ -56,11 +41,11 @@
       <a href="#" class="button fake-button" id="fake-input">Open camera</a>
     </p>
 
-    <div class="panel panel-border-narrow">
+    <!-- <div class="panel panel-border-narrow">
       <p>
       It might take a couple of minutes to process your photo, depending on your internet speed.
       </p>
-    </div>
+    </div> -->
 
   </div>
 
@@ -74,7 +59,7 @@
         </div>
       </div>
       <div class="preview-box__ui">
-        <p class="bold-medium">Can you see the whole fit note, and is it sharp and clear?</p>
+        <p class="bold-medium">Can you see the whole QR code, and is it sharp and clear?</p>
         <div class="grid">
           <div class="grid__item one-half">
             <a href="#" class="preview-retry button button-secondary" style="width: 100%;text-align:center;">No &ndash; retake</a>

@@ -8,8 +8,11 @@
 {% extends page.layout | d(prototype.current.layout) %}
 
 {% block content %}
-<h1 class="heading-large visuallyhidden">
-  Checking the photo
+<main id="content">
+<div class="grid-row">
+  <div class="column-full">
+<h1 id="status" style="text-align:center;" class="heading-large">
+  Scanning photos
 </h1>
 
 <div class="loading-circle">
@@ -27,7 +30,17 @@
   <div class="loading-circle12 loading-child"></div>
 </div>
 
-<p style="text-align:center;" class="bold-medium">Checking the photo</p>
+<div style="text-align:center;" class="tick js-hidden">
+  <img src="/public/images/icon-tick@2x.png" width="40" alt="" />
+</div>
+
+<p id="message" style="text-align:center;" class="">This should only take a moment.</p>
+
+<p id="submit" style="text-align:center;" class="js-hidden"><a href="complete" class="button">Submit</a></p>
+
+</div>
+</div>
+</main>
 
 {% endblock %}
 
@@ -37,9 +50,22 @@
 
   <script language="JavaScript">
 
-    setTimeout(function(){
-      window.location = 'your-details'
-    }, 5000)
+  setTimeout(function(){
+document.getElementById("status").innerHTML = "Checking QR code";  }, 3000)
+
+setTimeout(function(){
+document.getElementById("status").innerHTML = "Checking fit note";  }, 6000)
+
+setTimeout(function(){
+  $('.tick').removeClass('js-hidden').addClass('zoomIn');
+  $('.loading-circle').addClass('js-hidden');
+  $('#message').addClass('js-hidden');
+  $('#submit').removeClass('js-hidden');
+  document.getElementById("status").innerHTML = "Checks complete";
+  document.getElementById("message").innerHTML = "Your fit note is ready to send";
+}, 9000);
+
+
 
   </script>
 
