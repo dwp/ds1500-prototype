@@ -383,6 +383,27 @@ ul.completed > li span {
           animation: bounceIn 1s ease-in-out;
 }
 
+// ds1500 styles
+.help-notice {
+  width: 100%;
+  float: left;
+  clear: both;
+  padding: 0.1em 0 0.1em 1em;
+  background: url(https://assets.digital.cabinet-office.gov.uk/static/icon-important-187bcc8d8a6d56498c4ac26cadad102d.png) no-repeat scroll 0 0.5em;
+}
+.help-notice p {
+  padding: 0 1em 0 2em;
+  font-weight: 600;
+}
+.declaration {
+  background-position: 10px 15px;
+  background-color: #eeeeee;
+  padding-left: 55px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
 // loading
 .loading-circle {
   margin: 30px auto;
