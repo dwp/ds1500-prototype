@@ -1,0 +1,66 @@
+{% set page = {
+  title: 'index',
+  dev: true,
+  secondary: true,
+  html_classes: ['page-class']
+} %}
+
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+  <h1 class="heading-large">
+    Claim your fee
+  </h1>
+
+  <p>
+    We have received the document and will now look at the information you have provided in support of your patient's claim.
+  </p>
+
+  <p><a class="" href="/public/pdf/dummy_pdf.pdf" target="_blank">Download a copy of the DS1500 Medical Report</a></p>
+
+  <!-- <p>
+    If we need additional information, we will contact you.
+  </p> -->
+
+       <p><a class="button" href="/public/pdf/testfee.pdf" target="_blank">Download the DS1500 Fee form</a></p>
+
+       <p class="heading-large">***Some sort of warning about the session</p>
+
+       <p>Complete the missing information and post in to DWP to claim your payment</p>
+
+       <p>
+         We will pay your fee directly into your bank or building society account.
+       </p>
+
+
+    <!-- Primary buttons, secondary links -->
+    <!-- <div class="form-group">
+        <input type="submit" class="" value="Send another D1500">
+    </div> -->
+
+    <p><a class="" href="/public/pdf/testfee.pdf" target="_blank">Send another DS1500</a></p>
+
+
+  </form>
+
+{% endblock %}
+
+{% block secondary %}
+{% endblock %}
+
+{% block body_end %}
+
+  {{ super() }}
+
+  <script src="/public/javascripts/validate.js"></script>
+
+  <script type="text/javascript">
+
+  $('a.ds1500-download').on( "click", function(event) {
+    $(this).next().removeClass('js-hidden');
+    event.preventDefault;
+  });
+
+  </script>
+
+{% endblock %}
