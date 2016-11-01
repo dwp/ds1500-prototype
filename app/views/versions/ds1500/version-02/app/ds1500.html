@@ -20,82 +20,30 @@
 
   <p class="font-medium">Report to accompany your patient&#39;s claim under Special Rules</p>
 
-  <a name="errorAnchor"></a>
-  <div id="error-summary" class="error-summary js-hidden" role="group" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+    <form action="{{ prototype.current.path }}download" method="get">
 
-    <h1 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">There was a problem with the form</h1>
-
-    <ul class="error-summary-list" id="error-summary-list">
-    </ul>
-
-  </div>
-
-    <form action="{{ prototype.current.path }}index" method="post">
-
-        <div id="id-patientName-form-group" class="form-group " >
+        <div id="id-patientName-form-group" class="form-group" data-required data-error="Patient name is a required field">
           <label class="form-label-bold text" for="id-patientName">
             Patient&#39;s name
           </label>
-          <div id="id-patientName-error-message" class="form-error validation-message">
-
-          </div>
-          <label for="id-patientName">
-
-          </label>
-          <div class="form-hint text">
-
-          </div>
-          <input id="id-patientName" name="patientName" class="form-control " type="text" value=""
-          data-parsley-required=true data-parsley-required-message="Patient name is a required field" data-parsley-class-handler="#id-patientName-form-group"
-          data-parsley-errors-container="#id-patientName-error-message"
-          data-parsley-trigger="focusout"
-          onchange="ga('send', 'event', 'Text box - Input', 'Patient\'s name', 'Required')"
-          onpaste="ga('send', 'event', 'Text box - Paste', 'Patient\'s name', 'Required')"
-          >
+          <input id="id-patientName" name="patientName" class="form-control" type="text" value="">
         </div>
 
-        <div id="id-patientAddress-form-group" class="form-group " >
+        <div id="id-patientAddress-form-group" class="form-group" data-required data-error="Patient address is a required field">
           <label class="form-label-bold text" for="id-patientAddress">
             Patient&#39;s address
           </label>
-          <div id="id-patientAddress-error-message" class="form-error validation-message">
-
-          </div>
-          <div>
-
-          </div>
-          <div class="form-hint text">
-
-          </div>
-          <textarea id="id-patientAddress" name="patientAddress" class="form-control" rows="5"
-          data-parsley-required=true data-parsley-required-message="Patient address is a required field" data-parsley-class-handler="#id-patientAddress-form-group"
-          data-parsley-errors-container="#id-patientAddress-error-message"
-          data-parsley-trigger="focusout"
-          onchange="ga('send', 'event', 'Text box - Input', 'Patient\'s address', 'Required')"
-          onpaste="ga('send', 'event', 'Text box - Paste', 'Patient\'s address', 'Required')"
-          ></textarea>
+          <textarea id="id-patientAddress" name="patientAddress" class="form-control" rows="5"></textarea>
         </div>
 
-        <div id="id-patientPostcode-form-group" class="form-group " >
+        <div id="id-patientPostcode-form-group" class="form-group" data-required data-error="Patient postcode is a required field">
           <label class="form-label-bold text" for="id-patientPostcode">
-
-          </label>
-          <div id="id-patientPostcode-error-message" class="form-error validation-message">
-
-          </div>
-          <label for="id-patientPostcode">
 
           </label>
           <div class="form-hint text">
             Postcode
           </div>
-          <input id="id-patientPostcode" name="patientPostcode" class="form-control " type="text" value=""
-          data-parsley-required=true data-parsley-required-message="Patient postcode is a required field" data-parsley-class-handler="#id-patientPostcode-form-group"
-          data-parsley-errors-container="#id-patientPostcode-error-message"
-          data-parsley-trigger="focusout"
-          onchange="ga('send', 'event', 'Text box - Input', 'Postcode', 'Required')"
-          onpaste="ga('send', 'event', 'Text box - Paste', 'Postcode', 'Required')"
-          >
+          <input id="id-patientPostcode" name="patientPostcode" class="form-control " type="text" value="">
         </div>
 
         <div id="id-patientDateOfBirth-form-group" class="form-group date-group ">
@@ -103,58 +51,21 @@
             <legend class="form-label-bold text" for="id-patientDateOfBirth">
               Patient&#39;s date of birth
             </legend>
-            <div id="id-patientDateOfBirth-error-message" class="form-error validation-message">
-
-            </div>
             <div class="form-date">
               <div class="form-hint">
                 For example, 21 4 1979
               </div>
-              <div class="form-error validation-message hidden"></div>
               <div class="form-group form-group-day">
                 <label>Day</label>
-                <input type="text" name="patientDateOfBirth-day" class="day js-day form-control" size="2" maxlength="2"
-                data-parsley-trigger="focusout"
-                data-parsley-range="[1,31]"
-                data-parsley-range-message="Day must be between 1 and 31"
-                data-parsley-type="number"
-                data-parsley-type-message="Day must be between 1 and 31"
-                data-parsley-errors-container="#id-patientDateOfBirth-error-message"
-                data-parsley-class-handler="#id-patientDateOfBirth-form-group"
-                data-parsley-required=true data-parsley-required-message="Patient day of birth is a required field"
-                onchange="ga('send', 'event', 'Text box - Input', 'Day', 'Required')"
-                onpaste="ga('send', 'event', 'Text box - Paste', 'Day', 'Required')"
-                >
+                <input type="text" name="patientDateOfBirth-day" class="day js-day form-control" size="2" maxlength="2">
               </div>
               <div class="form-group form-group-month">
                 <label>Month</label>
-                <input type="text" name="patientDateOfBirth-month" class="month js-month form-control" size="2" maxlength="2"
-                data-parsley-trigger="focusout"
-                data-parsley-range="[1,12]"
-                data-parsley-range-message="Month must be between 1 and 12"
-                data-parsley-type="number"
-                data-parsley-type-message="Month must be between 1 and 12"
-                data-parsley-errors-container="#id-patientDateOfBirth-error-message"
-                data-parsley-class-handler="#id-patientDateOfBirth-form-group"
-                data-parsley-required=true data-parsley-required-message="Patient month of birth is a required field"
-                onchange="ga('send', 'event', 'Text box - Input', 'Month', 'Required')"
-                onpaste="ga('send', 'event', 'Text box - Paste', 'Month', 'Required')"
-                >
+                <input type="text" name="patientDateOfBirth-month" class="month js-month form-control" size="2" maxlength="2">
               </div>
               <div class="form-group form-group-year">
                 <label>Year</label>
-                <input type="text" name="patientDateOfBirth-year" class="year js-year form-control" size="4" maxlength="4"
-                data-parsley-trigger="focusout"
-                data-parsley-range="[1890,2115]"
-                data-parsley-range-message="Please enter a valid year"
-                data-parsley-type="number"
-                data-parsley-type-message="Please enter a valid year"
-                data-parsley-errors-container="#id-patientDateOfBirth-error-message"
-                data-parsley-class-handler="#id-patientDateOfBirth-form-group"
-                data-parsley-required=true data-parsley-required-message="Patient year of birth is a required field"
-                onchange="ga('send', 'event', 'Text box - Input', 'Year', 'Required')"
-                onpaste="ga('send', 'event', 'Text box - Paste', 'Year', 'Required')"
-                >
+                <input type="text" name="patientDateOfBirth-year" class="year js-year form-control" size="4" maxlength="4">
               </div>
             </div>
           </fieldset>
@@ -164,54 +75,24 @@
           <label class="form-label-bold text" for="id-patientNino">
             Patient&#39;s National Insurance number (optional)
           </label>
-          <div id="id-patientNino-error-message" class="form-error validation-message">
-
-          </div>
-          <label for="id-patientNino">
-
-          </label>
           <div class="form-hint text">
             For example, &#39;QQ 12 34 56 C&#39;
           </div>
-          <input id="id-patientNino" name="patientNino" class="form-control " type="text" value=""
-           data-parsley-class-handler="#id-patientNino-form-group"
-          data-parsley-errors-container="#id-patientNino-error-message"
-          data-parsley-trigger="focusout"
-          onchange="ga('send', 'event', 'Text box - Input', 'Patient\'s National Insurance number (optional)' , 'Optional')"
-          onpaste="ga('send', 'event', 'Text box - Paste', 'Patient\'s National Insurance number (optional)' , 'Optional')"
-          >
+          <input id="id-patientNino" name="patientNino" class="form-control " type="text" value="">
         </div>
 
-        <div id="id-diagnosis-form-group" class="form-group " >
+        <div id="id-diagnosis-form-group" class="form-group" data-required data-error="Diagnosis is a required field">
           <label class="form-label-bold text" for="id-diagnosis">
             What is the diagnosis?
           </label>
-          <div id="id-diagnosis-error-message" class="form-error validation-message">
-
-          </div>
-          <div>
-
-          </div>
-          <div class="form-hint text">
-
-          </div>
-          <textarea id="id-diagnosis" name="diagnosis" class="form-control" rows="5"
-          data-parsley-required=true data-parsley-required-message="Diagnosis is a required field" data-parsley-class-handler="#id-diagnosis-form-group"
-          data-parsley-errors-container="#id-diagnosis-error-message"
-          data-parsley-trigger="focusout"
-          onchange="ga('send', 'event', 'Text box - Input', 'What is the diagnosis?', 'Required')"
-          onpaste="ga('send', 'event', 'Text box - Paste', 'What is the diagnosis?', 'Required')"
-          ></textarea>
+          <textarea id="id-diagnosis" name="diagnosis" class="form-control" rows="5"></textarea>
         </div>
 
-        <div id="id-dateOfDiagnosis-form-group" class="form-group date-group ">
+        <div id="id-dateOfDiagnosis-form-group" class="form-group date-group">
           <fieldset>
             <legend class="form-label-bold text" for="id-dateOfDiagnosis">
               Date of diagnosis (optional)
             </legend>
-            <div id="id-dateOfDiagnosis-error-message" class="form-error validation-message">
-
-            </div>
             <div class="form-date">
               <div class="form-hint">
                 For example, 04 2015
@@ -219,35 +100,11 @@
               <div class="form-error validation-message hidden"></div>
               <div class="form-group form-group-month">
                 <label>Month</label>
-                <input type="text" name="dateOfDiagnosis-month" class="month js-month form-control" size="2" maxlength="2"
-                data-parsley-trigger="focusout"
-                data-parsley-range="[1,12]"
-                data-parsley-range-message="Month must be between 1 and 12"
-                data-parsley-type="number"
-                data-parsley-type-message="Month must be between 1 and 12"
-                data-parsley-errors-container="#id-dateOfDiagnosis-error-message"
-                data-parsley-class-handler="#id-dateOfDiagnosis-form-group"
-
-                onchange="ga('send', 'event', 'Text box - Input', 'Date of diagnosis - month (optional)' , 'Optional')"
-                onpaste="ga('send', 'event', 'Text box - Paste', 'Date of diagnosis - month (optional)' , 'Optional')"
-
-                >
+                <input type="text" name="dateOfDiagnosis-month" class="month js-month form-control" size="2" maxlength="2">
               </div>
               <div class="form-group form-group-year">
                 <label>Year</label>
-                <input type="text" name="dateOfDiagnosis-year" class="year js-year form-control" size="4" maxlength="4"
-                data-parsley-trigger="focusout"
-                data-parsley-range="[1890,2115]"
-                data-parsley-range-message="Please enter a valid year"
-                data-parsley-type="number"
-                data-parsley-type-message="Please enter a valid year"
-                data-parsley-errors-container="#id-dateOfDiagnosis-error-message"
-                data-parsley-class-handler="#id-dateOfDiagnosis-form-group"
-
-                onchange="ga('send', 'event', 'Text box - Input', 'Date of diagnosis - year (optional)' , 'Optional')"
-                onpaste="ga('send', 'event', 'Text box - Paste', 'Date of diagnosis  - year (optional)' , 'Optional')"
-
-                >
+                <input type="text" name="dateOfDiagnosis-year" class="year js-year form-control" size="4" maxlength="4">
               </div>
             </div>
           </fieldset>
@@ -257,89 +114,36 @@
           <label class="form-label-bold text" for="id-otherDiagnoses">
             Other relevant diagnoses? (optional)
           </label>
-          <div id="id-otherDiagnoses-error-message" class="form-error validation-message">
-
-          </div>
-          <div>
-
-          </div>
-          <div class="form-hint text">
-
-          </div>
-          <textarea id="id-otherDiagnoses" name="otherDiagnoses" class="form-control" rows="5"
-           data-parsley-class-handler="#id-otherDiagnoses-form-group"
-          data-parsley-errors-container="#id-otherDiagnoses-error-message"
-          data-parsley-trigger="focusout"
-
-          onchange="ga('send', 'event', 'Text box - Input', 'Other relevant diagnoses? (optional)' , 'Optional')"
-          onpaste="ga('send', 'event', 'Text box - Paste', 'Other relevant diagnoses? (optional)' , 'Optional')"
-
-          ></textarea>
+          <textarea id="id-otherDiagnoses" name="otherDiagnoses" class="form-control" rows="5"></textarea>
         </div>
 
-        <div id="id-patientAware-form-group" class="form-group inline" >
+        <div id="id-patientAware-form-group" class="form-group inline" data-required data-error="Prognosis is a required field">
           <legend class="form-label-bold">
             Is the patient aware of their condition and/or prognosis?
           </legend>
-          <div id="id-patientAware-error-message" class="form-error validation-message">
-
-          </div>
-          <div class="form-hint">
-
-          </div>
           <fieldset>
                 <label class="block-label" for="id-patientAware-1" data-target="">
-                  <input id="id-patientAware-1" type="radio" name="patientAware" value="Yes" data-parsley-multiple="patientAware"
-                  data-parsley-required=true data-parsley-required-message="Prognosis is a required field"
-                  data-parsley-class-handler="#id-patientAware-form-group"
-                  data-parsley-errors-container="#id-patientAware-error-message"
-                  onclick="ga('send', 'event', 'Radio - select ', 'Is the patient aware of their condition and/or prognosis?' , 'Yes')"
-                  onchange="ga('send', 'event', 'Radio - change ', 'Is the patient aware of their condition and/or prognosis?' , 'Yes')" 
-                  />
+                  <input id="id-patientAware-1" type="radio" name="patientAware" value="Yes" />
                   Yes
                 </label>
                 <label class="block-label" for="id-patientAware-2" data-target="">
-                  <input id="id-patientAware-2" type="radio" name="patientAware" value="No" data-parsley-multiple="patientAware"
-                  data-parsley-required=true data-parsley-required-message="Prognosis is a required field"
-                  data-parsley-class-handler="#id-patientAware-form-group"
-                  data-parsley-errors-container="#id-patientAware-error-message"
-                  onclick="ga('send', 'event', 'Radio - select ', 'Is the patient aware of their condition and/or prognosis?' , 'No')"
-                  onchange="ga('send', 'event', 'Radio - change ', 'Is the patient aware of their condition and/or prognosis?' , 'No')" 
-                  />
+                  <input id="id-patientAware-2" type="radio" name="patientAware" value="No" />
                   No
                 </label>
           </fieldset>
         </div>
 
-        <div id="id-formRequester-form-group" class="form-group " >
+        <div id="id-formRequester-form-group" class="form-group" data-required data-error="Form requester is a required field">
           <legend class="form-label-bold">
             Who asked you to complete this form?
           </legend>
-          <div id="id-formRequester-error-message" class="form-error validation-message">
-
-          </div>
-          <div class="form-hint">
-
-          </div>
           <fieldset>
                 <label class="block-label" for="id-formRequester-1" data-target="">
-                  <input id="id-formRequester-1" type="radio" name="formRequester" value="Patient" data-parsley-multiple="formRequester"
-                  data-parsley-required=true data-parsley-required-message="Form requester is a required field"
-                  data-parsley-class-handler="#id-formRequester-form-group"
-                  data-parsley-errors-container="#id-formRequester-error-message"
-                  onclick="ga('send', 'event', 'Radio - select ', 'Who asked you to complete this form?' , 'Patient')"
-                  onchange="ga('send', 'event', 'Radio - change ', 'Who asked you to complete this form?' , 'Patient')" 
-                  />
+                  <input id="id-formRequester-1" type="radio" name="formRequester" value="Patient" />
                   Patient
                 </label>
                 <label class="block-label" for="id-formRequester-2" data-target="requested-details">
-                  <input id="id-formRequester-2" type="radio" name="formRequester" value="Representative" data-parsley-multiple="formRequester"
-                  data-parsley-required=true data-parsley-required-message="Form requester is a required field"
-                  data-parsley-class-handler="#id-formRequester-form-group"
-                  data-parsley-errors-container="#id-formRequester-error-message"
-                  onclick="ga('send', 'event', 'Radio - select ', 'Who asked you to complete this form?' , 'Representative')"
-                  onchange="ga('send', 'event', 'Radio - change ', 'Who asked you to complete this form?' , 'Representative')" 
-                  />
+                  <input id="id-formRequester-2" type="radio" name="formRequester" value="Representative" />
                   Representative
                 </label>
           </fieldset>
@@ -352,227 +156,104 @@
                 <label class="form-label-bold text" for="id-representativeName">
 
                 </label>
-                <div id="id-representativeName-error-message" class="form-error validation-message">
-
-                </div>
-                <label for="id-representativeName">
-
-                </label>
                 <div class="form-hint text">
                   Name
                 </div>
-                <input id="id-representativeName" name="representativeName" class="form-control " type="text" value=""
-                data-parsley-required=true data-parsley-required-message="Representative name is a required field" data-parsley-class-handler="#id-representativeName-form-group"
-                data-parsley-errors-container="#id-representativeName-error-message"
-                data-parsley-trigger="focusout"
-                onchange="ga('send', 'event', 'Text box - Input', 'Representative details - name', 'Required')"
-                onpaste="ga('send', 'event', 'Text box - Paste', 'Representative details - name', 'Required')"
-                >
+                <input id="id-representativeName" name="representativeName" class="form-control " type="text" value="">
               </div>
 
-              <div id="id-representativeAddress-form-group" class="form-group " >
+              <div id="id-representativeAddress-form-group" class="form-group">
                 <label class="form-label-bold text" for="id-representativeAddress">
 
                 </label>
-                <div id="id-representativeAddress-error-message" class="form-error validation-message">
-
-                </div>
-                <div>
-
-                </div>
                 <div class="form-hint text">
                   Address
                 </div>
-                <textarea id="id-representativeAddress" name="representativeAddress" class="form-control" rows="5"
-                data-parsley-required=true data-parsley-required-message="Representative address is a required field" data-parsley-class-handler="#id-representativeAddress-form-group"
-                data-parsley-errors-container="#id-representativeAddress-error-message"
-                data-parsley-trigger="focusout"
-                onchange="ga('send', 'event', 'Text box - Input', 'Representative details - Address', 'Required')"
-                onpaste="ga('send', 'event', 'Text box - Paste', 'Representative details - Address', 'Required')"
-                ></textarea>
+                <textarea id="id-representativeAddress" name="representativeAddress" class="form-control" rows="5"></textarea>
               </div>
 
-              <div id="id-representativePostcode-form-group" class="form-group " >
+              <div id="id-representativePostcode-form-group" class="form-group">
                 <label class="form-label-bold text" for="id-representativePostcode">
-
-                </label>
-                <div id="id-representativePostcode-error-message" class="form-error validation-message">
-
-                </div>
-                <label for="id-representativePostcode">
 
                 </label>
                 <div class="form-hint text">
                   Postcode (optional)
                 </div>
-                <input id="id-representativePostcode" name="representativePostcode" class="form-control " type="text" value=""
-                 data-parsley-class-handler="#id-representativePostcode-form-group"
-                data-parsley-errors-container="#id-representativePostcode-error-message"
-                data-parsley-trigger="focusout"
-                onchange="ga('send', 'event', 'Text box - Input', 'Representative Postcode (optional)' , 'Optional')"
-                onpaste="ga('send', 'event', 'Text box - Paste', 'Representative Postcode (optional)' , 'Optional')"
-                >
+                <input id="id-representativePostcode" name="representativePostcode" class="form-control " type="text" value="">
               </div>
 
       </div>
 
      </div>
 
-        <div id="id-clinicalFeatures-form-group" class="form-group " >
+        <div id="id-clinicalFeatures-form-group" class="form-group" data-required data-error="Clinical features is a required field">
           <label class="form-label-bold text" for="id-clinicalFeatures">
             Clinical features
           </label>
-          <div id="id-clinicalFeatures-error-message" class="form-error validation-message">
-
-          </div>
           <div>
             Details of clinical features which indicate a severe progressive condition
           </div>
           <div class="form-hint text">
             For example: rate of progression, recurrence, staging, tumour markers, CD4 count and viral load, bulbar involvement, respiratory and/or heart failure
           </div>
-          <textarea id="id-clinicalFeatures" name="clinicalFeatures" class="form-control" rows="5"
-          data-parsley-required=true data-parsley-required-message="Clinical features is a required field" data-parsley-class-handler="#id-clinicalFeatures-form-group"
-          data-parsley-errors-container="#id-clinicalFeatures-error-message"
-          data-parsley-trigger="focusout"
-          onchange="ga('send', 'event', 'Text box - Input', 'Clinical features', 'Required')"
-          onpaste="ga('send', 'event', 'Text box - Paste', 'Clinical features', 'Required')"
-          ></textarea>
+          <textarea id="id-clinicalFeatures" name="clinicalFeatures" class="form-control" rows="5"></textarea>
         </div>
 
-        <div id="id-treatment-form-group" class="form-group " >
+        <div id="id-treatment-form-group" class="form-group" data-required data-error="Treatment details is a required field">
           <label class="form-label-bold text" for="id-treatment">
             Treatment
           </label>
-          <div id="id-treatment-error-message" class="form-error validation-message">
-
-          </div>
           <div>
             Details of relevant past or current treatment with date including response (if none or palliative please state)
           </div>
-          <div class="form-hint text">
-
-          </div>
-          <textarea id="id-treatment" name="treatment" class="form-control" rows="5"
-          data-parsley-required=true data-parsley-required-message="Treatment details is a required field" data-parsley-class-handler="#id-treatment-form-group"
-          data-parsley-errors-container="#id-treatment-error-message"
-          data-parsley-trigger="focusout"
-          onchange="ga('send', 'event', 'Text box - Input', 'Treatment', 'Required')"
-          onpaste="ga('send', 'event', 'Text box - Paste', 'Treatment', 'Required')"
-          ></textarea>
+          <textarea id="id-treatment" name="treatment" class="form-control" rows="5"></textarea>
         </div>
 
-        <div id="id-otherIntervention-form-group" class="form-group " >
+        <div id="id-otherIntervention-form-group" class="form-group">
           <label class="form-label-bold text" for="id-otherIntervention">
 
           </label>
-          <div id="id-otherIntervention-error-message" class="form-error validation-message">
-
-          </div>
           <div>
             Is any other intervention or treatment planned which may significantly alter progression of the condition? (optional)
           </div>
-          <div class="form-hint text">
-
-          </div>
-          <textarea id="id-otherIntervention" name="otherIntervention" class="form-control" rows="5"
-           data-parsley-class-handler="#id-otherIntervention-form-group"
-          data-parsley-errors-container="#id-otherIntervention-error-message"
-          data-parsley-trigger="focusout"
-          onchange="ga('send', 'event', 'Text box - Input', 'Is any other intervention or treatment planned which may significantly alter progression of the condition? (optional)' , 'Optional')"
-          onpaste="ga('send', 'event', 'Text box - Paste', 'Is any other intervention or treatment planned which may significantly alter progression of the condition? (optional)' , 'Optional')"
-          ></textarea>
+          <textarea id="id-otherIntervention" name="otherIntervention" class="form-control" rows="5"></textarea>
         </div>
 
-        <div id="id-declaration-form-group" class="form-group " >
+        <div id="id-declaration-form-group" class="form-group" data-required data-error="Declaration is a required field">
           <legend class="form-label-bold">
             I am the patient&#39;s:
           </legend>
-          <div id="id-declaration-error-message" class="form-error validation-message">
-
-          </div>
-          <div class="form-hint">
-
-          </div>
           <fieldset>
-                <label class="block-label" for="id-declaration-1" data-target="declaration-GMC-number">
-                  <input id="id-declaration-1" type="radio" name="declaration" value="General Practitioner" data-parsley-multiple="declaration"
-                  <!-- data-parsley-required=true data-parsley-required-message="Declaration is a required field"
-                  data-parsley-class-handler="#id-declaration-form-group"
-                  data-parsley-errors-container="#id-declaration-error-message"
-                  onclick="ga('send', 'event', 'Radio - select ', 'I am the patient\'s:' , 'General Practitioner')"
-                  onchange="ga('send', 'event', 'Radio - change ', 'I am the patient\'s:' , 'General Practitioner')" 
-                  />
-                  General Practitioner
-                </label>
-                <label class="block-label" for="id-declaration-2" data-target="declaration-GMC-number">
-                  <input id="id-declaration-2" type="radio" name="declaration" value="GMC registered consultant" data-parsley-multiple="declaration"
-                  data-parsley-required=true data-parsley-required-message="Declaration is a required field"
-                  data-parsley-class-handler="#id-declaration-form-group"
-                  data-parsley-errors-container="#id-declaration-error-message"
-                  onclick="ga('send', 'event', 'Radio - select ', 'I am the patient\'s:' , 'GMC registered consultant')"
-                  onchange="ga('send', 'event', 'Radio - change ', 'I am the patient\'s:' , 'GMC registered consultant')" 
-                  />
-                  GMC registered consultant
-                </label>
-                <label class="block-label" for="id-declaration-3" data-target="declaration-other-details">
-                  <input id="id-declaration-3" type="radio" name="declaration" value="Other" data-parsley-multiple="declaration"
-                  data-parsley-required=true data-parsley-required-message="Declaration is a required field"
-                  data-parsley-class-handler="#id-declaration-form-group"
-                  data-parsley-errors-container="#id-declaration-error-message"
-                  onclick="ga('send', 'event', 'Radio - select ', 'I am the patient\'s:' , 'Other')"
-                  onchange="ga('send', 'event', 'Radio - change ', 'I am the patient\'s:' , 'Other')" 
-                  />
-                  Other
-                </label>
+              <label class="block-label" for="id-declaration-1" data-target="declaration-GMC-number">
+                <input id="id-declaration-1" type="radio" name="declaration" value="General Practitioner" />
+                General Practitioner
+              </label>
+              <label class="block-label" for="id-declaration-2" data-target="declaration-GMC-number">
+                <input id="id-declaration-2" type="radio" name="declaration" value="GMC registered consultant" />
+                GMC registered consultant
+              </label>
+              <label class="block-label" for="id-declaration-3" data-target="declaration-other-details">
+                <input id="id-declaration-3" type="radio" name="declaration" value="Other" />
+                Other
+              </label>
           </fieldset>
         </div>
 
-      <div class="panel panel-border-narrow js-hidden" id="declaration-other-details" aria-hidden="false" >
+      <div class="panel panel-border-narrow js-hidden" id="declaration-other-details" aria-hidden="false">
           <div id="id-declarationAdditionalDetail-form-group" class="form-group " >
-            <label class="form-label-bold text" for="id-declarationAdditionalDetail">
-
-            </label>
-            <div id="id-declarationAdditionalDetail-error-message" class="form-error validation-message">
-
-            </div>
-            <label for="id-declarationAdditionalDetail">
+            <label class="form-label text" for="id-declarationAdditionalDetail">
               Please specify
             </label>
-            <div class="form-hint text">
-
-            </div>
-            <input id="id-declarationAdditionalDetail" name="declarationAdditionalDetail" class="form-control " type="text" value=""
-             data-parsley-class-handler="#id-declarationAdditionalDetail-form-group"
-            data-parsley-errors-container="#id-declarationAdditionalDetail-error-message"
-            data-parsley-trigger="focusout"
-            onchange="sendOtherText('id-declarationAdditionalDetail');"
-            onpaste="ga('send', 'event', 'Text box - Paste', 'Other - Please specify', 'Required')"
-            >
+            <input id="id-declarationAdditionalDetail" name="declarationAdditionalDetail" class="form-control " type="text" value="">
           </div>
       </div>
 
- 	 <div class="panel panel-border-narrow js-hidden" id="declaration-GMC-number" aria-hidden="false" >
+     	 <div class="panel panel-border-narrow js-hidden" id="declaration-GMC-number" aria-hidden="false" >
 	          <div id="id-declarationAdditionalDetail-form-group" class="form-group " >
-	            <label class="form-label-bold text" for="id-declarationAdditionalDetail">
-
-	            </label>
-	            <div id="id-declarationAdditionalDetail-error-message" class="form-error validation-message">
-
-	            </div>
-	            <label for="id-declarationAdditionalDetail">
+	            <label class="form-label text" for="id-declarationAdditionalDetail">
 	              GMC number
 	            </label>
-	            <div class="form-hint text">
-
-	            </div>
-	            <input id="id-declarationAdditionalDetail" name="declarationAdditionalDetail" class="form-control " type="text" value=""
-	             data-parsley-class-handler="#id-declarationAdditionalDetail-form-group"
-	            data-parsley-errors-container="#id-declarationAdditionalDetail-error-message"
-	            data-parsley-trigger="focusout"
-	            onchange="sendOtherText('id-declarationAdditionalDetail');"
-	            onpaste="ga('send', 'event', 'Text box - Paste', 'Other - Please specify', 'Required')"
-	            >
+	            <input id="id-declarationAdditionalDetail" name="declarationAdditionalDetail" class="form-control " type="text" value="">
 	          </div>
       	</div>
 
@@ -580,66 +261,21 @@
           <label class="form-label-bold text" for="id-gpName">
             Your name
           </label>
-          <div id="id-gpName-error-message" class="form-error validation-message">
-
-          </div>
-          <label for="id-gpName">
-
-          </label>
-          <div class="form-hint text">
-
-          </div>
-          <input id="id-gpName" name="gpName" class="form-control " type="text" value=""
-          data-parsley-required=true data-parsley-required-message="Your name is a required field" data-parsley-class-handler="#id-gpName-form-group"
-          data-parsley-errors-container="#id-gpName-error-message"
-          data-parsley-trigger="focusout"
-          onchange="ga('send', 'event', 'Text box - Input', 'Your name', 'Required')"
-          onpaste="ga('send', 'event', 'Text box - Paste', 'Your name', 'Required')"
-          >
+          <input id="id-gpName" name="gpName" class="form-control " type="text" value="">
         </div>
 
         <div id="id-gpAddress-form-group" class="form-group " >
           <label class="form-label-bold text" for="id-gpAddress">
             Your address
           </label>
-          <div id="id-gpAddress-error-message" class="form-error validation-message">
-
-          </div>
-          <div>
-
-          </div>
-          <div class="form-hint text">
-
-          </div>
-          <textarea id="id-gpAddress" name="gpAddress" class="form-control" rows="5"
-          data-parsley-required=true data-parsley-required-message="Your address is a required field" data-parsley-class-handler="#id-gpAddress-form-group"
-          data-parsley-errors-container="#id-gpAddress-error-message"
-          data-parsley-trigger="focusout"
-          onchange="ga('send', 'event', 'Text box - Input', 'Your address', 'Required')"
-          onpaste="ga('send', 'event', 'Text box - Paste', 'Your address', 'Required')"
-          ></textarea>
+          <textarea id="id-gpAddress" name="gpAddress" class="form-control" rows="5"></textarea>
         </div>
 
         <div id="id-gpPhone-form-group" class="form-group " >
           <label class="form-label-bold text" for="id-gpPhone">
             Your phone number (optional)
           </label>
-          <div id="id-gpPhone-error-message" class="form-error validation-message">
-
-          </div>
-          <label for="id-gpPhone">
-
-          </label>
-          <div class="form-hint text">
-
-          </div>
-          <input id="id-gpPhone" name="gpPhone" class="form-control " type="text" value=""
-           data-parsley-class-handler="#id-gpPhone-form-group"
-          data-parsley-errors-container="#id-gpPhone-error-message"
-          data-parsley-trigger="focusout"
-          onchange="ga('send', 'event', 'Text box - Input', 'Your phone number (optional)' , 'Optional')"
-          onpaste="ga('send', 'event', 'Text box - Paste', 'Your phone number (optional)' , 'Optional')"
-          >
+          <input id="id-gpPhone" name="gpPhone" class="form-control " type="text" value="">
         </div>
 
       <div class="help-notice declaration form-label-bold text">
@@ -656,19 +292,9 @@
         </ul>
       </div>
 
-      <!-- Primary buttons, secondary links -->
       <div class="form-group">
           <input type="submit" class="button" value="I agree - Send medical report">
       </div>
-
-
-      <!-- <div class="transaction">
-        <p class="get-started group">
-          <a id="ds1500-submit" class="button inactive" href="javascript:submitForm();">I agree - Send medical report</a>
-        </p>
-        <p id="wait" class="js-hidden"><img src="public\images\ajax-wait.gif"> Sending form....please wait</p>
-        <p id="form-error-message" class="form-error js-hidden">There was a problem sending the form</p>
-      </div> -->
 
     </form>
 {% endblock %}
@@ -680,15 +306,6 @@
 
   {{ super() }}
 
-  <script src="/public/javascripts/validate.js"></script>
-
-  <script type="text/javascript">
-
-  $('a.ds1500-download').on( "click", function(event) {
-    $(this).next().removeClass('js-hidden');
-    event.preventDefault;
-  });
-
-  </script>
+  <!-- <script src="/public/javascripts/validate.js"></script> -->
 
 {% endblock %}
