@@ -1,0 +1,47 @@
+{% set page = {
+  title: 'index',
+  dev: true,
+  secondary: true,
+  service: 'DS1500',
+  html_classes: ['page-class']
+} %}
+
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+  <h1 class="heading-large">
+    <span class="heading-secondary">
+      Step 2 of 4
+    </span>
+    You have submitted the DS1500 Medical Report
+  </h1>
+
+  <p>
+    We have received the document and will now look at the information you have provided in support of your patient's claim.
+  </p>
+
+  <p><a class="button" href="download3">Claim your fee</a></p>
+
+  </form>
+
+{% endblock %}
+
+{% block secondary %}
+{% endblock %}
+
+{% block body_end %}
+
+  {{ super() }}
+
+  <script src="/public/javascripts/validate.js"></script>
+
+  <script type="text/javascript">
+
+  $('a.ds1500-download').on( "click", function(event) {
+    $(this).next().removeClass('js-hidden');
+    event.preventDefault;
+  });
+
+  </script>
+
+{% endblock %}

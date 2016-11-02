@@ -1,0 +1,63 @@
+{% set page = {
+  title: 'index',
+  dev: true,
+  secondary: true,
+  service: 'DS1500',
+  html_classes: ['page-class']
+} %}
+
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+  <h1 class="heading-large">
+    <span class="heading-secondary">
+      Step 3 of 4
+    </span>
+    Claim your fee
+  </h1>
+
+  <p>
+    Download and print the DS1500 fee form.
+  </p>
+
+  <p><a class="button-secondary" href="/public/pdf/testfee.pdf" target="_blank">Download the DS1500 Fee form</a></p>
+
+  <div class="panel panel-border-narrow">
+    <p class="bold-small">
+      You'll only be able to download this once.
+    </p>
+  </div>
+
+  <p>
+    Complete the missing information and post in to DWP to claim your payment.
+  </p>
+
+  <p>
+    We will pay your fee directly into your bank or building society account.
+  </p>
+
+  <p><a class="button" href="download4">Save a copy of the patient report</a></p>
+
+  </form>
+
+{% endblock %}
+
+{% block secondary %}
+{% endblock %}
+
+{% block body_end %}
+
+  {{ super() }}
+
+  <script src="/public/javascripts/validate.js"></script>
+
+  <script type="text/javascript">
+
+  $('a.ds1500-download').on( "click", function(event) {
+    $(this).next().removeClass('js-hidden');
+    event.preventDefault;
+  });
+
+  </script>
+
+{% endblock %}
