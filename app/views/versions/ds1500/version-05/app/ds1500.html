@@ -9,7 +9,7 @@
 {% extends page.layout | d(prototype.current.layout) %}
 
 {% block primary %}
-<a class="link-back" href="ds1500-start.html">Back</a>
+<a class="link-back" href="index">Back</a>
 
 <h1 class="heading-xlarge no-bottom-margin">
   <span class="category heading-secondary">
@@ -18,285 +18,288 @@
   DS1500
 </h1>
 
-  <p class="font-medium">Report to accompany your patient&#39;s claim under Special Rules</p>
+<p class="font-medium">Report to accompany your patient&#39;s claim under Special Rules</p>
 
-    <form action="{{ prototype.current.path }}download" method="get">
+{% include "../../../../includes/error-summary.html" %}
 
-        <div id="id-patientName-form-group" class="form-group" data-required data-error="Patient name is a required field">
-          <label class="form-label-bold text" for="id-patientName">
-            Patient&#39;s name
-          </label>
-          <input id="id-patientName" name="patientName" class="form-control" type="text" value="">
-        </div>
 
-        <div id="id-patientAddress-form-group" class="form-group" data-required data-error="Patient address is a required field">
-          <label class="form-label-bold text" for="id-patientAddress">
-            Patient&#39;s address
-          </label>
-          <textarea id="id-patientAddress" name="patientAddress" class="form-control" rows="5"></textarea>
-        </div>
+  <form action="{{ prototype.current.path }}download" method="get">
 
-        <div id="id-patientPostcode-form-group" class="form-group" data-required data-error="Patient postcode is a required field">
-          <label class="form-label-bold text" for="id-patientPostcode">
-
-          </label>
-          <div class="form-hint text">
-            Postcode
-          </div>
-          <input id="id-patientPostcode" name="patientPostcode" class="form-control " type="text" value="">
-        </div>
-
-        <div id="id-patientDateOfBirth-form-group" class="form-group date-group ">
-          <fieldset>
-            <legend class="form-label-bold text" for="id-patientDateOfBirth">
-              Patient&#39;s date of birth
-            </legend>
-            <div class="form-date">
-              <div class="form-hint">
-                For example, 21 4 1979
-              </div>
-              <div class="form-group form-group-day">
-                <label>Day</label>
-                <input type="text" name="patientDateOfBirth-day" class="day js-day form-control" size="2" maxlength="2">
-              </div>
-              <div class="form-group form-group-month">
-                <label>Month</label>
-                <input type="text" name="patientDateOfBirth-month" class="month js-month form-control" size="2" maxlength="2">
-              </div>
-              <div class="form-group form-group-year">
-                <label>Year</label>
-                <input type="text" name="patientDateOfBirth-year" class="year js-year form-control" size="4" maxlength="4">
-              </div>
-            </div>
-          </fieldset>
-        </div>
-
-        <div id="id-patientNino-form-group" class="form-group " >
-          <label class="form-label-bold text" for="id-patientNino">
-            Patient&#39;s National Insurance number (optional)
-          </label>
-          <div class="form-hint text">
-            For example, &#39;QQ 12 34 56 C&#39;
-          </div>
-          <input id="id-patientNino" name="patientNino" class="form-control " type="text" value="">
-        </div>
-
-        <div id="id-diagnosis-form-group" class="form-group" data-required data-error="Diagnosis is a required field">
-          <label class="form-label-bold text" for="id-diagnosis">
-            What is the diagnosis?
-          </label>
-          <textarea id="id-diagnosis" name="diagnosis" class="form-control" rows="5"></textarea>
-        </div>
-
-        <div id="id-dateOfDiagnosis-form-group" class="form-group date-group">
-          <fieldset>
-            <legend class="form-label-bold text" for="id-dateOfDiagnosis">
-              Date of diagnosis (optional)
-            </legend>
-            <div class="form-date">
-              <div class="form-hint">
-                For example, 04 2015
-              </div>
-              <div class="form-error validation-message hidden"></div>
-              <div class="form-group form-group-month">
-                <label>Month</label>
-                <input type="text" name="dateOfDiagnosis-month" class="month js-month form-control" size="2" maxlength="2">
-              </div>
-              <div class="form-group form-group-year">
-                <label>Year</label>
-                <input type="text" name="dateOfDiagnosis-year" class="year js-year form-control" size="4" maxlength="4">
-              </div>
-            </div>
-          </fieldset>
-        </div>
-
-        <div id="id-otherDiagnoses-form-group" class="form-group " >
-          <label class="form-label-bold text" for="id-otherDiagnoses">
-            Other relevant diagnoses? (optional)
-          </label>
-          <textarea id="id-otherDiagnoses" name="otherDiagnoses" class="form-control" rows="5"></textarea>
-        </div>
-
-        <div id="id-patientAware-form-group" class="form-group inline" data-required data-error="Prognosis is a required field">
-          <legend class="form-label-bold">
-            Is the patient aware of their condition and/or prognosis?
-          </legend>
-          <fieldset>
-                <label class="block-label" for="id-patientAware-1" data-target="">
-                  <input id="id-patientAware-1" type="radio" name="patientAware" value="Yes" />
-                  Yes
-                </label>
-                <label class="block-label" for="id-patientAware-2" data-target="">
-                  <input id="id-patientAware-2" type="radio" name="patientAware" value="No" />
-                  No
-                </label>
-          </fieldset>
-        </div>
-
-        <div id="id-formRequester-form-group" class="form-group" data-required data-error="Form requester is a required field">
-          <legend class="form-label-bold">
-            Who asked you to complete this form?
-          </legend>
-          <fieldset>
-                <label class="block-label" for="id-formRequester-1" data-target="">
-                  <input id="id-formRequester-1" type="radio" name="formRequester" value="Patient" />
-                  Patient
-                </label>
-                <label class="block-label" for="id-formRequester-2" data-target="requested-details">
-                  <input id="id-formRequester-2" type="radio" name="formRequester" value="Representative" />
-                  Representative
-                </label>
-          </fieldset>
-        </div>
-
-      <div class="panel panel-border-narrow js-hidden" id="requested-details" aria-hidden="false" >
-            <div class="form-group">
-            <p class="form-label-bold add-padding" for="fullName">Representative details</p>
-              <div id="id-representativeName-form-group" class="form-group " >
-                <label class="form-label-bold text" for="id-representativeName">
-
-                </label>
-                <div class="form-hint text">
-                  Name
-                </div>
-                <input id="id-representativeName" name="representativeName" class="form-control " type="text" value="">
-              </div>
-
-              <div id="id-representativeAddress-form-group" class="form-group">
-                <label class="form-label-bold text" for="id-representativeAddress">
-
-                </label>
-                <div class="form-hint text">
-                  Address
-                </div>
-                <textarea id="id-representativeAddress" name="representativeAddress" class="form-control" rows="5"></textarea>
-              </div>
-
-              <div id="id-representativePostcode-form-group" class="form-group">
-                <label class="form-label-bold text" for="id-representativePostcode">
-
-                </label>
-                <div class="form-hint text">
-                  Postcode (optional)
-                </div>
-                <input id="id-representativePostcode" name="representativePostcode" class="form-control " type="text" value="">
-              </div>
-
+      <div id="id-patientName-form-group" class="form-group" data-required data-error="Patient name is a required field">
+        <label class="form-label-bold text" for="id-patientName">
+          Patient&#39;s name
+        </label>
+        <input id="id-patientName" name="patientName" class="form-control" type="text" value="">
       </div>
 
-     </div>
+      <div id="id-patientAddress-form-group" class="form-group" data-required data-error="Patient address is a required field">
+        <label class="form-label-bold text" for="id-patientAddress">
+          Patient&#39;s address
+        </label>
+        <textarea id="id-patientAddress" name="patientAddress" class="form-control" rows="5"></textarea>
+      </div>
 
-        <div id="id-clinicalFeatures-form-group" class="form-group" data-required data-error="Clinical features is a required field">
-          <label class="form-label-bold text" for="id-clinicalFeatures">
-            Clinical features
-          </label>
-          <div>
-            Details of clinical features which indicate a severe progressive condition
-          </div>
-          <div class="form-hint text">
-            For example: rate of progression, recurrence, staging, tumour markers, CD4 count and viral load, bulbar involvement, respiratory and/or heart failure
-          </div>
-          <textarea id="id-clinicalFeatures" name="clinicalFeatures" class="form-control" rows="5"></textarea>
+      <div id="id-patientPostcode-form-group" class="form-group" data-required data-error="Patient postcode is a required field">
+        <label class="form-label-bold text" for="id-patientPostcode">
+
+        </label>
+        <div class="form-hint text">
+          Postcode
         </div>
+        <input id="id-patientPostcode" name="patientPostcode" class="form-control " type="text" value="">
+      </div>
 
-        <div id="id-treatment-form-group" class="form-group" data-required data-error="Treatment details is a required field">
-          <label class="form-label-bold text" for="id-treatment">
-            Treatment
-          </label>
-          <div>
-            Details of relevant past or current treatment with date including response (if none or palliative please state)
-          </div>
-          <textarea id="id-treatment" name="treatment" class="form-control" rows="5"></textarea>
-        </div>
-
-        <div id="id-otherIntervention-form-group" class="form-group">
-          <label class="form-label-bold text" for="id-otherIntervention">
-
-          </label>
-          <div>
-            Is any other intervention or treatment planned which may significantly alter progression of the condition? (optional)
-          </div>
-          <textarea id="id-otherIntervention" name="otherIntervention" class="form-control" rows="5"></textarea>
-        </div>
-
-        <div id="id-declaration-form-group" class="form-group" data-required data-error="Declaration is a required field">
-          <legend class="form-label-bold">
-            I am the patient&#39;s:
+      <div id="id-patientDateOfBirth-form-group" class="form-group date-group ">
+        <fieldset>
+          <legend class="form-label-bold text" for="id-patientDateOfBirth">
+            Patient&#39;s date of birth
           </legend>
-          <fieldset>
-              <label class="block-label" for="id-declaration-1" data-target="declaration-GMC-number">
-                <input id="id-declaration-1" type="radio" name="declaration" value="General Practitioner" />
-                General Practitioner
-              </label>
-              <label class="block-label" for="id-declaration-2" data-target="declaration-GMC-number">
-                <input id="id-declaration-2" type="radio" name="declaration" value="GMC registered consultant" />
-                GMC registered consultant
-              </label>
-              <label class="block-label" for="id-declaration-3" data-target="declaration-other-details">
-                <input id="id-declaration-3" type="radio" name="declaration" value="Other" />
-                Other
-              </label>
-          </fieldset>
-        </div>
+          <div class="form-date">
+            <div class="form-hint">
+              For example, 21 4 1979
+            </div>
+            <div class="form-group form-group-day">
+              <label>Day</label>
+              <input type="text" name="patientDateOfBirth-day" class="day js-day form-control" size="2" maxlength="2">
+            </div>
+            <div class="form-group form-group-month">
+              <label>Month</label>
+              <input type="text" name="patientDateOfBirth-month" class="month js-month form-control" size="2" maxlength="2">
+            </div>
+            <div class="form-group form-group-year">
+              <label>Year</label>
+              <input type="text" name="patientDateOfBirth-year" class="year js-year form-control" size="4" maxlength="4">
+            </div>
+          </div>
+        </fieldset>
+      </div>
 
-      <div class="panel panel-border-narrow js-hidden" id="declaration-other-details" aria-hidden="false">
-          <div id="id-declarationAdditionalDetail-form-group" class="form-group " >
+      <div id="id-patientNino-form-group" class="form-group " >
+        <label class="form-label-bold text" for="id-patientNino">
+          Patient&#39;s National Insurance number (optional)
+        </label>
+        <div class="form-hint text">
+          For example, &#39;QQ 12 34 56 C&#39;
+        </div>
+        <input id="id-patientNino" name="patientNino" class="form-control " type="text" value="">
+      </div>
+
+      <div id="id-diagnosis-form-group" class="form-group" data-required data-error="Diagnosis is a required field">
+        <label class="form-label-bold text" for="id-diagnosis">
+          What is the diagnosis?
+        </label>
+        <textarea id="id-diagnosis" name="diagnosis" class="form-control" rows="5"></textarea>
+      </div>
+
+      <div id="id-dateOfDiagnosis-form-group" class="form-group date-group">
+        <fieldset>
+          <legend class="form-label-bold text" for="id-dateOfDiagnosis">
+            Date of diagnosis (optional)
+          </legend>
+          <div class="form-date">
+            <div class="form-hint">
+              For example, 04 2015
+            </div>
+            <div class="form-error validation-message hidden"></div>
+            <div class="form-group form-group-month">
+              <label>Month</label>
+              <input type="text" name="dateOfDiagnosis-month" class="month js-month form-control" size="2" maxlength="2">
+            </div>
+            <div class="form-group form-group-year">
+              <label>Year</label>
+              <input type="text" name="dateOfDiagnosis-year" class="year js-year form-control" size="4" maxlength="4">
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div id="id-otherDiagnoses-form-group" class="form-group " >
+        <label class="form-label-bold text" for="id-otherDiagnoses">
+          Other relevant diagnoses? (optional)
+        </label>
+        <textarea id="id-otherDiagnoses" name="otherDiagnoses" class="form-control" rows="5"></textarea>
+      </div>
+
+      <div id="id-patientAware-form-group" class="form-group inline" data-required data-error="Prognosis is a required field">
+        <legend class="form-label-bold">
+          Is the patient aware of their condition and/or prognosis?
+        </legend>
+        <fieldset>
+              <label class="block-label" for="id-patientAware-1" data-target="">
+                <input id="id-patientAware-1" type="radio" name="patientAware" value="Yes" />
+                Yes
+              </label>
+              <label class="block-label" for="id-patientAware-2" data-target="">
+                <input id="id-patientAware-2" type="radio" name="patientAware" value="No" />
+                No
+              </label>
+        </fieldset>
+      </div>
+
+      <div id="id-formRequester-form-group" class="form-group" data-required data-error="Form requester is a required field">
+        <legend class="form-label-bold">
+          Who asked you to complete this form?
+        </legend>
+        <fieldset>
+              <label class="block-label" for="id-formRequester-1" data-target="">
+                <input id="id-formRequester-1" type="radio" name="formRequester" value="Patient" />
+                Patient
+              </label>
+              <label class="block-label" for="id-formRequester-2" data-target="requested-details">
+                <input id="id-formRequester-2" type="radio" name="formRequester" value="Representative" />
+                Representative
+              </label>
+        </fieldset>
+      </div>
+
+    <div class="panel panel-border-narrow js-hidden" id="requested-details" aria-hidden="false" >
+          <div class="form-group">
+          <p class="form-label-bold add-padding" for="fullName">Representative details</p>
+            <div id="id-representativeName-form-group" class="form-group " >
+              <label class="form-label-bold text" for="id-representativeName">
+
+              </label>
+              <div class="form-hint text">
+                Name
+              </div>
+              <input id="id-representativeName" name="representativeName" class="form-control " type="text" value="">
+            </div>
+
+            <div id="id-representativeAddress-form-group" class="form-group">
+              <label class="form-label-bold text" for="id-representativeAddress">
+
+              </label>
+              <div class="form-hint text">
+                Address
+              </div>
+              <textarea id="id-representativeAddress" name="representativeAddress" class="form-control" rows="5"></textarea>
+            </div>
+
+            <div id="id-representativePostcode-form-group" class="form-group">
+              <label class="form-label-bold text" for="id-representativePostcode">
+
+              </label>
+              <div class="form-hint text">
+                Postcode (optional)
+              </div>
+              <input id="id-representativePostcode" name="representativePostcode" class="form-control " type="text" value="">
+            </div>
+
+    </div>
+
+   </div>
+
+      <div id="id-clinicalFeatures-form-group" class="form-group" data-required data-error="Clinical features is a required field">
+        <label class="form-label-bold text" for="id-clinicalFeatures">
+          Clinical features
+        </label>
+        <div>
+          Details of clinical features which indicate a severe progressive condition
+        </div>
+        <div class="form-hint text">
+          For example: rate of progression, recurrence, staging, tumour markers, CD4 count and viral load, bulbar involvement, respiratory and/or heart failure
+        </div>
+        <textarea id="id-clinicalFeatures" name="clinicalFeatures" class="form-control" rows="5"></textarea>
+      </div>
+
+      <div id="id-treatment-form-group" class="form-group" data-required data-error="Treatment details is a required field">
+        <label class="form-label-bold text" for="id-treatment">
+          Treatment
+        </label>
+        <div>
+          Details of relevant past or current treatment with date including response (if none or palliative please state)
+        </div>
+        <textarea id="id-treatment" name="treatment" class="form-control" rows="5"></textarea>
+      </div>
+
+      <div id="id-otherIntervention-form-group" class="form-group">
+        <label class="form-label-bold text" for="id-otherIntervention">
+
+        </label>
+        <div>
+          Is any other intervention or treatment planned which may significantly alter progression of the condition? (optional)
+        </div>
+        <textarea id="id-otherIntervention" name="otherIntervention" class="form-control" rows="5"></textarea>
+      </div>
+
+      <div id="id-declaration-form-group" class="form-group" data-required data-error="Declaration is a required field">
+        <legend class="form-label-bold">
+          I am the patient&#39;s:
+        </legend>
+        <fieldset>
+            <label class="block-label" for="id-declaration-1" data-target="declaration-GMC-number">
+              <input id="id-declaration-1" type="radio" name="declaration" value="General Practitioner" />
+              General Practitioner
+            </label>
+            <label class="block-label" for="id-declaration-2" data-target="declaration-GMC-number">
+              <input id="id-declaration-2" type="radio" name="declaration" value="GMC registered consultant" />
+              GMC registered consultant
+            </label>
+            <label class="block-label" for="id-declaration-3" data-target="declaration-other-details">
+              <input id="id-declaration-3" type="radio" name="declaration" value="Other" />
+              Other
+            </label>
+        </fieldset>
+      </div>
+
+    <div class="panel panel-border-narrow js-hidden" id="declaration-other-details" aria-hidden="false">
+        <div id="id-declarationAdditionalDetail-form-group" class="form-group" data-required data-error="GMC number is a required field">
+          <label class="form-label text" for="id-declarationAdditionalDetail">
+            Please specify
+          </label>
+          <input id="id-declarationAdditionalDetail" name="declarationAdditionalDetail" class="form-control " type="text" value="">
+        </div>
+    </div>
+
+     <div class="panel panel-border-narrow js-hidden" id="declaration-GMC-number" aria-hidden="false" >
+          <div id="id-declarationAdditionalDetail-form-group" class="form-group" data-required data-error="GMC number is a required field">
             <label class="form-label text" for="id-declarationAdditionalDetail">
-              Please specify
+              GMC number
             </label>
             <input id="id-declarationAdditionalDetail" name="declarationAdditionalDetail" class="form-control " type="text" value="">
           </div>
       </div>
 
-     	 <div class="panel panel-border-narrow js-hidden" id="declaration-GMC-number" aria-hidden="false" >
-	          <div id="id-declarationAdditionalDetail-form-group" class="form-group " >
-	            <label class="form-label text" for="id-declarationAdditionalDetail">
-	              GMC number
-	            </label>
-	            <input id="id-declarationAdditionalDetail" name="declarationAdditionalDetail" class="form-control " type="text" value="">
-	          </div>
-      	</div>
-
-        <div id="id-gpName-form-group" class="form-group " >
-          <label class="form-label-bold text" for="id-gpName">
-            Your name
-          </label>
-          <input id="id-gpName" name="gpName" class="form-control " type="text" value="">
-        </div>
-
-        <div id="id-gpAddress-form-group" class="form-group " >
-          <label class="form-label-bold text" for="id-gpAddress">
-            Your address
-          </label>
-          <textarea id="id-gpAddress" name="gpAddress" class="form-control" rows="5"></textarea>
-        </div>
-
-        <div id="id-gpPhone-form-group" class="form-group " >
-          <label class="form-label-bold text" for="id-gpPhone">
-            Your phone number (optional)
-          </label>
-          <input id="id-gpPhone" name="gpPhone" class="form-control " type="text" value="">
-        </div>
-
-      <div class="help-notice declaration form-label-bold text">
-        <label class="form-label-bold text">
-            Declaration
+      <div id="id-gpName-form-group" class="form-group" data-required data-error="Your name is a required field">
+        <label class="form-label-bold text" for="id-gpName">
+          Your name
         </label>
-        <div><br>By submitting this report, you confirm that:
-        </div>
-        <ul>
-          <li>The person named in this report is my patient.</li>
-          <li>This is a full report of their condition and treatment.</li>
-          <li>I have read and understood the notes on the completion of this form.</li>
-          <li>I am satisfied that the form is appropriate.</li>
-        </ul>
+        <input id="id-gpName" name="gpName" class="form-control " type="text" value="">
       </div>
 
-      <div class="form-group">
-          <input type="submit" class="button" value="I agree - Send medical report">
+      <div id="id-gpAddress-form-group" class="form-group" data-required data-error="Your address is a required field">
+        <label class="form-label-bold text" for="id-gpAddress">
+          Your address
+        </label>
+        <textarea id="id-gpAddress" name="gpAddress" class="form-control" rows="5"></textarea>
       </div>
 
-    </form>
+      <div id="id-gpPhone-form-group" class="form-group " >
+        <label class="form-label-bold text" for="id-gpPhone">
+          Your phone number (optional)
+        </label>
+        <input id="id-gpPhone" name="gpPhone" class="form-control " type="text" value="">
+      </div>
+
+    <div class="help-notice declaration form-label-bold text">
+      <label class="form-label-bold text">
+          Declaration
+      </label>
+      <div><br>By submitting this report, you confirm that:
+      </div>
+      <ul>
+        <li>The person named in this report is my patient.</li>
+        <li>This is a full report of their condition and treatment.</li>
+        <li>I have read and understood the notes on the completion of this form.</li>
+        <li>I am satisfied that the form is appropriate.</li>
+      </ul>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" class="button" value="I agree - Send medical report">
+    </div>
+
+  </form>
 {% endblock %}
 
 {% block secondary %}
@@ -304,8 +307,8 @@
 
 {% block body_end %}
 
-  {{ super() }}
+{{ super() }}
 
-  <!-- <script src="/public/javascripts/validate.js"></script> -->
+<script src="/public/javascripts/validate.js"></script>
 
 {% endblock %}

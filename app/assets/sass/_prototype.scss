@@ -40,6 +40,9 @@
   background-color: $white;
   color: $black;
 }
+.no-bottom-margin {
+  margin-bottom: 0;
+}
 
 // To-do pattern
 ul.todo-list > li {

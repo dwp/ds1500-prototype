@@ -9,7 +9,7 @@
 {% extends page.layout | d(prototype.current.layout) %}
 
 {% block primary %}
-<a class="link-back" href="ds1500-start.html">Back</a>
+<a class="link-back" href="index">Back</a>
 
 <h1 class="heading-xlarge no-bottom-margin">
   <span class="category heading-secondary">
@@ -19,6 +19,9 @@
 </h1>
 
   <p class="font-medium">Report to accompany your patient&#39;s claim under Special Rules</p>
+
+  {% include "../../../../includes/error-summary.html" %}
+
 
     <form action="{{ prototype.current.path }}download" method="get">
 
@@ -240,7 +243,7 @@
         </div>
 
       <div class="panel panel-border-narrow js-hidden" id="declaration-other-details" aria-hidden="false">
-          <div id="id-declarationAdditionalDetail-form-group" class="form-group " >
+          <div id="id-declarationAdditionalDetail-form-group" class="form-group" data-required data-error="GMC number is a required field">
             <label class="form-label text" for="id-declarationAdditionalDetail">
               Please specify
             </label>
@@ -249,7 +252,7 @@
       </div>
 
      	 <div class="panel panel-border-narrow js-hidden" id="declaration-GMC-number" aria-hidden="false" >
-	          <div id="id-declarationAdditionalDetail-form-group" class="form-group " >
+	          <div id="id-declarationAdditionalDetail-form-group" class="form-group" data-required data-error="GMC number is a required field">
 	            <label class="form-label text" for="id-declarationAdditionalDetail">
 	              GMC number
 	            </label>
@@ -257,14 +260,14 @@
 	          </div>
       	</div>
 
-        <div id="id-gpName-form-group" class="form-group " >
+        <div id="id-gpName-form-group" class="form-group" data-required data-error="Your name is a required field">
           <label class="form-label-bold text" for="id-gpName">
             Your name
           </label>
           <input id="id-gpName" name="gpName" class="form-control " type="text" value="">
         </div>
 
-        <div id="id-gpAddress-form-group" class="form-group " >
+        <div id="id-gpAddress-form-group" class="form-group" data-required data-error="Your address is a required field">
           <label class="form-label-bold text" for="id-gpAddress">
             Your address
           </label>
@@ -306,6 +309,6 @@
 
   {{ super() }}
 
-  <!-- <script src="/public/javascripts/validate.js"></script> -->
+  <script src="/public/javascripts/validate.js"></script>
 
 {% endblock %}
