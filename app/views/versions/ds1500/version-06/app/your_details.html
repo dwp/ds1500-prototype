@@ -1,0 +1,75 @@
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+  <a class="link-back" href="javascript:history.go(-1);">Back</a>
+
+  <h1 class="heading-large" style="margin-bottom:20px">Your details</h1>
+  
+  <form action="declaration" method="POST">
+  
+    <div id="id-declaration-form-group" class="form-group" data-required data-error="Declaration is a required field">
+      <legend class="form-label-bold">
+        I am the patient&#39;s:
+      </legend>
+      <fieldset>
+          <label class="block-label" for="id-declaration-1" data-target="declaration-GMC-number">
+            <input id="id-declaration-1" type="radio" name="declaration" value="General Practitioner" />
+            General Practitioner
+          </label>
+          <label class="block-label" for="id-declaration-2" data-target="declaration-GMC-number">
+            <input id="id-declaration-2" type="radio" name="declaration" value="GMC registered consultant" />
+            GMC registered consultant
+          </label>
+          <label class="block-label" for="id-declaration-3" data-target="declaration-other-details">
+            <input id="id-declaration-3" type="radio" name="declaration" value="Other" />
+            Other
+          </label>
+      </fieldset>
+      
+      <div class="panel panel-border-narrow js-hidden panel-inner" id="declaration-other-details" aria-hidden="false">
+        <div id="id-declarationAdditionalDetail-form-group" class="form-group" data-required data-error="GMC number is a required field">
+          <label class="form-label text" for="id-declarationAdditionalDetail">
+            Please specify
+          </label>
+          <input id="id-declarationAdditionalDetail" name="declarationAdditionalDetail" class="form-control " type="text" value="">
+        </div>
+      </div>
+
+      <div class="panel panel-border-narrow js-hidden panel-inner" id="declaration-GMC-number" aria-hidden="false" >
+        <div id="id-declarationAdditionalDetail-form-group" class="form-group" data-required data-error="GMC number is a required field">
+          <label class="form-label text" for="id-declarationAdditionalDetail">
+            GMC number
+          </label>
+          <input id="id-declarationAdditionalDetail" name="declarationAdditionalDetail" class="form-control " type="text" value="">
+        </div>
+      </div>
+      
+    </div>
+      
+    <div id="id-gpName-form-group" class="form-group" data-required data-error="Your name is a required field">
+      <label class="form-label-bold text" for="id-gpName">
+        Your name
+      </label>
+      <input id="id-gpName" name="gpName" class="form-control " type="text" value="">
+    </div>
+
+    <div id="id-gpAddress-form-group" class="form-group" data-required data-error="Your address is a required field">
+      <label class="form-label-bold text" for="id-gpAddress">
+        Your address
+      </label>
+      <textarea id="id-gpAddress" name="gpAddress" class="form-control" rows="5"></textarea>
+    </div>
+
+    <div id="id-gpPhone-form-group" class="form-group " >
+      <label class="form-label-bold text" for="id-gpPhone">
+        Your phone number
+      </label>
+      <input id="id-gpPhone" name="gpPhone" class="form-control " type="text" value="">
+    </div>
+    
+    <div class="form-group" style="margin-top:20px">
+        <input type="submit" class="button" value="Continue">
+    </div>
+  
+  </form>
+{% endblock %}

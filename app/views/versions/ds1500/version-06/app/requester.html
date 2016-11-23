@@ -1,0 +1,48 @@
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+  <a class="link-back" href="javascript:history.go(-1);">Back</a>
+
+  <h1 class="heading-large" style="margin-bottom:20px">Who asked you to complete this form?</h1>
+  
+  <form action="clinical_features" method="POST">
+  
+    <div id="id-formRequester-form-group" class="form-group" data-required data-error="Form requester is a required field">
+      <fieldset>
+            <label class="block-label" for="id-formRequester-1" data-target="">
+              <input id="id-formRequester-1" type="radio" name="formRequester" value="Patient" />
+              The patient
+            </label>
+            <label class="block-label" for="id-formRequester-2" data-target="requested-details">
+              <input id="id-formRequester-2" type="radio" name="formRequester" value="Representative" />
+              A representative of the patient
+            </label>
+      </fieldset>
+    </div>
+
+    <div class="panel panel-border-narrow js-hidden" id="requested-details" aria-hidden="false" >
+      
+      <div class="form-group">
+        <p class="form-label-bold add-padding" for="fullName">Representative details</p>
+        <div id="id-representativeName-form-group" class="form-group " >
+          <div class="form-hint text"> Name </div>
+          <input id="id-representativeName" name="representativeName" class="form-control " type="text" value="">
+        </div>
+        <div id="id-representativeAddress-form-group" class="form-group">
+          <div class="form-hint text"> Address </div>
+          <textarea id="id-representativeAddress" name="representativeAddress" class="form-control" rows="5"></textarea>
+        </div>
+        <div id="id-representativePostcode-form-group" class="form-group">
+          <div class="form-hint text"> Postcode (optional) </div>
+          <input id="id-representativePostcode" name="representativePostcode" class="form-control " type="text" value="">
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="form-group" style="margin-top:20px">
+        <input type="submit" class="button" value="Continue">
+    </div>
+  
+  </form>
+{% endblock %}

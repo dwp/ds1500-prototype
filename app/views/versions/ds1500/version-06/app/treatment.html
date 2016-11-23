@@ -1,0 +1,29 @@
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+  <a class="link-back" href="javascript:history.go(-1);">Back</a>
+
+  <h1 class="heading-large" style="margin-bottom:20px">Treatment</h1>
+  
+  <form action="your_details" method="POST">
+    
+    <div id="id-treatment-form-group" class="form-group" data-required data-error="Treatment details is a required field">
+      <label class="form-label">
+        Details of relevant past or current treatment with date including response (if none or palliative please state)
+      </label>
+      <textarea id="id-treatment" name="treatment" class="form-control midwidth" rows="5"></textarea>
+    </div>
+
+    <div id="id-otherIntervention-form-group" class="form-group">
+      <label class="form-label">
+        Other intervention or treatment planned which may significantly alter progression of the condition? (optional)
+      </label>
+      <textarea id="id-otherIntervention" name="otherIntervention" class="form-control midwidth" rows="5"></textarea>
+    </div>
+    
+    <div class="form-group" style="margin-top:20px">
+        <input type="submit" class="button" value="Continue">
+    </div>
+  
+  </form>
+{% endblock %}

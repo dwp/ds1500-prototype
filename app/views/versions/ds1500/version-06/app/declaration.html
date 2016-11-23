@@ -1,0 +1,27 @@
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+  <a class="link-back" href="javascript:history.go(-1);">Back</a>
+
+  <h1 class="heading-large" style="margin-bottom:20px">Declaration</h1>
+  
+  <form action="download" method="POST">
+  
+    <div class="text">
+      <div class="heading-medium" style="margin-top:0">
+        <br>You confirm that:
+      </div>
+      <ul class="list-bullet list">
+        <li>The person named in this report is your patient.</li>
+        <li>This is a full report of their condition and treatment.</li>
+        <li>you have read and understood the notes on the completion of this form.</li>
+        <li>You are satisfied that the form is appropriate.</li>
+      </ul>
+    </div>
+    
+    <div class="form-group" style="margin-top:20px">
+        <input type="submit" class="button" value="I agree, send medical report">
+    </div>
+  
+  </form>
+{% endblock %}

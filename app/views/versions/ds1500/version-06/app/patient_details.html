@@ -1,0 +1,66 @@
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+  <a class="link-back" href="javascript:history.go(-1);">Back</a>
+
+  <h1 class="heading-large"> Patient details </h1>
+  
+  <form action="diagnosis" method="POST">
+  
+    <div id="id-patientName-form-group" class="form-group" data-required data-error="Patient name is a required field">
+      <label class="form-label-bold text" for="id-patientName">
+        Name
+      </label>
+      <input id="id-patientName" name="patientName" class="form-control" type="text" value="">
+    </div>
+
+    <div id="id-patientAddress-form-group" class="form-group" data-required data-error="Patient address is a required field">
+      <label class="form-label-bold text" for="id-patientAddress">
+        Address
+      </label>
+      <textarea id="id-patientAddress" name="patientAddress" class="form-control" rows="5"></textarea>
+      <div class="text" style="margin-top:10px;">
+        Postcode
+      </div>
+      <input id="id-patientPostcode" name="patientPostcode" class="form-control " type="text" value="">
+    </div>
+
+    <div id="id-patientDateOfBirth-form-group" class="form-group date-group ">
+      <fieldset>
+        <legend class="form-label-bold text" for="id-patientDateOfBirth">
+          Patient&#39;s date of birth
+        </legend>
+        <div class="form-date">
+          {# <div class="form-hint"> For example, 21 4 1979 </div> #}
+          <div class="form-group form-group-day">
+            <label>Day</label>
+            <input type="text" name="patientDateOfBirth-day" class="day js-day form-control" size="2" maxlength="2">
+          </div>
+          <div class="form-group form-group-month">
+            <label>Month</label>
+            <input type="text" name="patientDateOfBirth-month" class="month js-month form-control" size="2" maxlength="2">
+          </div>
+          <div class="form-group form-group-year">
+            <label>Year</label>
+            <input type="text" name="patientDateOfBirth-year" class="year js-year form-control" size="4" maxlength="4">
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    {# <div id="id-patientNino-form-group" class="form-group " >
+      <label class="form-label-bold text" for="id-patientNino">
+        Patient&#39;s National Insurance number (optional)
+      </label>
+      <div class="form-hint text">
+        For example, &#39;QQ 12 34 56 C&#39;
+      </div>
+      <input id="id-patientNino" name="patientNino" class="form-control " type="text" value="">
+    </div> #}
+    
+    <div class="form-group" style="margin-top:20px">
+        <input type="submit" class="button" value="Continue">
+    </div>
+  
+  </form>
+{% endblock %}

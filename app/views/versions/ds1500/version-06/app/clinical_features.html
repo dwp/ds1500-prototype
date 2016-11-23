@@ -1,0 +1,25 @@
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+  <a class="link-back" href="javascript:history.go(-1);">Back</a>
+
+  <h1 class="heading-large" style="margin-bottom:20px">Clinical features</h1>
+  
+  <form action="treatment" method="POST">
+  
+    <div id="id-clinicalFeatures-form-group" class="form-group" data-required data-error="Clinical features is a required field">
+      <div>
+        Details of clinical features which indicate a severe progressive condition
+      </div>
+      <div class="form-hint text">
+        For example: rate of progression, recurrence, staging, tumour markers, CD4 count and viral load, bulbar involvement, respiratory and/or heart failure
+      </div>
+      <textarea id="id-clinicalFeatures" name="clinicalFeatures" class="form-control midwidth" rows="5"></textarea>
+    </div>
+    
+    <div class="form-group" style="margin-top:20px">
+        <input type="submit" class="button" value="Continue">
+    </div>
+  
+  </form>
+{% endblock %}

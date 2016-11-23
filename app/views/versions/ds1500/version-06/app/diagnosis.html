@@ -1,0 +1,64 @@
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+  <a class="link-back" href="javascript:history.go(-1);">Back</a>
+
+  <h1 class="heading-large" style="margin-bottom:20px">What is the diagnosis?</h1>
+  
+  <form action="requester" method="POST">
+  
+    <div id="id-diagnosis-form-group" class="form-group" data-required data-error="Diagnosis is a required field">
+      <textarea id="id-diagnosis" name="diagnosis" class="form-control midwidth" rows="5"></textarea>
+    </div>
+
+    <div id="id-dateOfDiagnosis-form-group" class="form-group date-group">
+      <fieldset>
+        <legend class="form-label-bold text" for="id-dateOfDiagnosis">
+          Date of diagnosis (optional)
+        </legend>
+        <div class="form-date">
+          <div class="form-hint">
+            For example, 04 2015
+          </div>
+          <div class="form-error validation-message hidden"></div>
+          <div class="form-group form-group-month">
+            <label>Month</label>
+            <input type="text" name="dateOfDiagnosis-month" class="month js-month form-control" size="2" maxlength="2">
+          </div>
+          <div class="form-group form-group-year">
+            <label>Year</label>
+            <input type="text" name="dateOfDiagnosis-year" class="year js-year form-control" size="4" maxlength="4">
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div id="id-otherDiagnoses-form-group" class="form-group " >
+      <label class="form-label-bold text" for="id-otherDiagnoses">
+        Other relevant diagnoses? (optional)
+      </label>
+      <textarea id="id-otherDiagnoses" name="otherDiagnoses" class="form-control" rows="5"></textarea>
+    </div>
+
+    <div id="id-patientAware-form-group" class="form-group inline" data-required data-error="Prognosis is a required field">
+      <legend class="form-label-bold">
+        Is the patient aware of their condition and/or prognosis?
+      </legend>
+      <fieldset>
+            <label class="block-label" for="id-patientAware-1" data-target="">
+              <input id="id-patientAware-1" type="radio" name="patientAware" value="Yes" />
+              Yes
+            </label>
+            <label class="block-label" for="id-patientAware-2" data-target="">
+              <input id="id-patientAware-2" type="radio" name="patientAware" value="No" />
+              No
+            </label>
+      </fieldset>
+    </div>
+    
+    <div class="form-group" style="margin-top:20px">
+        <input type="submit" class="button" value="Continue">
+    </div>
+  
+  </form>
+{% endblock %}
