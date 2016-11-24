@@ -3,22 +3,23 @@
 {% block primary %}
   <a class="link-back" href="javascript:history.go(-1);">Back</a>
 
-  <h1 class="heading-large" style="margin-bottom:20px">What is the diagnosis?</h1>
+  <h1 class="heading-large" style="margin-bottom:20px">What&rsquo;s the diagnosis?</h1>
   
   <form action="requester" method="POST">
   
     <div id="id-diagnosis-form-group" class="form-group" data-required data-error="Diagnosis is a required field">
+      <label class="form-label">Include details of the patient’s main diagnosis, and any others that are relevant.</label>
       <textarea id="id-diagnosis" name="diagnosis" class="form-control midwidth" rows="5"></textarea>
     </div>
 
     <div id="id-dateOfDiagnosis-form-group" class="form-group date-group">
       <fieldset>
         <legend class="form-label-bold text" for="id-dateOfDiagnosis">
-          Date of diagnosis (optional)
+          Date of diagnosis (if known)
         </legend>
         <div class="form-date">
           <div class="form-hint">
-            For example, 04 2015
+            {# For example, 04 2015 #}
           </div>
           <div class="form-error validation-message hidden"></div>
           <div class="form-group form-group-month">
@@ -33,12 +34,12 @@
       </fieldset>
     </div>
 
-    <div id="id-otherDiagnoses-form-group" class="form-group " >
+    {# <div id="id-otherDiagnoses-form-group" class="form-group " >
       <label class="form-label-bold text" for="id-otherDiagnoses">
         Other relevant diagnoses? (optional)
       </label>
       <textarea id="id-otherDiagnoses" name="otherDiagnoses" class="form-control" rows="5"></textarea>
-    </div>
+    </div> #}
 
     <div id="id-patientAware-form-group" class="form-group inline" data-required data-error="Prognosis is a required field">
       <legend class="form-label-bold">
