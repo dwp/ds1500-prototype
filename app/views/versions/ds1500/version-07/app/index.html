@@ -1,0 +1,30 @@
+
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+
+<h1 class="form-title heading-large">Report that your Patient is Terminally Ill (form DS1500)</h1>
+
+<p>Your patient can get their benefit processed quicker if you tell the Department for Work and Pensions (DWP) that they are terminally ill.</p>
+
+<div class="form-group">
+  
+  <p class="form-label-bold">Use this service to:</p>
+  <ul class="list list-number">
+    <li>Tell the Department for Work and Pensions (DWP) that your patient is terminally ill.</li>
+    <li>Download a copy of the form for your records.</li>
+    {# <li>claim your £17 fee.</li> #}
+  </ul>
+
+  <p class="form-label-bold">DWP considers someone to be terminally ill if:</p>
+  <ul class="list list-bullet">
+    <li>they’re suffering from a progressive disease </li>
+    <li>because of that disease they’re not expected to live for longer than 6 months</li>
+  </ul>
+  
+</div><!-- .form-group -->
+
+<p><a id="ds1500-start" href="form.html" class="button button-start" role="button">Start now </a></p>
+
+
+{% endblock %}
