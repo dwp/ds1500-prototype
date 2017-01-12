@@ -1,11 +1,3 @@
-{% set page = {
-  title: 'index',
-  dev: true,
-  secondary: true,
-  service: 'DS1500',
-  html_classes: ['page-class']
-} %}
-
 {% extends page.layout | d(prototype.current.layout) %}
 
 {% block primary %}
@@ -17,21 +9,21 @@
 
   <h1 class="heading-large">Patient details</h1>
 
-  <div id="id-patientName-form-group" class="form-group" data-required data-error="Patient name is a required field">
+  <div id="id-patientName-form-group" class="form-group" data-required data-error="enter your patient&rsquo;s name">
     <label class="form-label text" for="id-patientName">
       Name
     </label>
     <input id="id-patientName" name="patientName" class="form-control" type="text" value="">
   </div>
 
-  <div id="id-patientAddress-form-group" style="margin-bottom:10px  ">
+  <div id="id-patientAddress-form-group" style="margin-bottom:10px" class="form-group" data-required data-error="enter your patient&rsquo;s address">
     <label class="form-label text" for="id-patientAddress">
       Address
     </label>
     <textarea id="id-patientAddress" name="patientAddress" class="form-control" rows="5"></textarea>
   </div>
 
-  <div id="id-patientPostcode-form-group" class="form-group" data-required data-error="Patient postcode is a required field">
+  <div id="id-patientPostcode-form-group" class="form-group" data-required data-error="enter your patient&rsquo;s postcode">
     <label class="form-label text" for="id-patientPostcode">
       Postcode
     </label>
@@ -73,7 +65,7 @@
   <!-- DIAGNOSIS - - - - - - - - - - - - - - - - - - - - - - - - -->
   <h1 class="heading-large" style="float:left">Diagnosis</h1>
 
-  <div id="id-diagnosis-form-group" class="form-group" data-required data-error="Diagnosis is a required field">
+  <div id="id-diagnosis-form-group" class="form-group" data-required data-error="describe your patient&rsquo;s diagnosis">
     <label class="form-label text" for="id-diagnosis">
       Include details of the patient’s main diagnosis, and any others that are relevant.
     </label>
@@ -107,9 +99,9 @@
   </div>
   #}
 
-  <div id="id-patientAware-form-group" class="form-group inline" data-required data-error="Prognosis is a required field">
+  <div id="id-patientAware-form-group" class="form-group inline" data-required data-error="select if your patient is aware of their condition">
     <legend class="form-label">
-      Is the patient aware of their condition and/or prognosis?
+      Is the patient aware of their prognosis? 
     </legend>
     <fieldset>
       <label class="block-label" for="id-patientAware-1" data-target="">
@@ -123,18 +115,18 @@
     </fieldset>
   </div>
 
-  <div id="id-formRequester-form-group" class="form-group" data-required data-error="Form requester is a required field">
+  <div id="id-formRequester-form-group" class="form-group" data-required data-error="select who asked you to complete this form">
     <legend class="form-label">
       Who asked you to complete this form?
     </legend>
     <fieldset>
       <label class="block-label" for="id-formRequester-1" data-target="">
         <input id="id-formRequester-1" type="radio" name="formRequester" value="Patient" />
-        The patient
+        the patient
       </label>
       <label class="block-label" for="id-formRequester-2" data-target="requested-details">
         <input id="id-formRequester-2" type="radio" name="formRequester" value="Representative" />
-        A representative of the patient
+        a representative of the patient
       </label>
     </fieldset>
     <!-- HIDDEN AT FIRST -->
@@ -166,7 +158,7 @@
   <!-- Clinical Features - - - - - - - - - - - - - - - - - - - - - - - - -->
   <h1 class="heading-large" style="float:left">Clinical features</h1>
 
-  <div id="id-clinicalFeatures-form-group" class="form-group" data-required data-error="Clinical features is a required field">
+  <div id="id-clinicalFeatures-form-group" class="form-group" data-required data-error="describe the clinical features">
     <label class="form-label text" for="id-clinicalFeatures">
       Give details of the clinical features that indicate a severe progressive condition.
     </label>
@@ -179,10 +171,10 @@
   <!-- TREATMENT - - - - - - - - - - - - - - - - - - - - - - - - -->
   <h1 class="heading-large" style="float:left">Treatment</h1>
 
-  <div id="id-treatment-form-group" class="form-group" data-required data-error="Treatment details is a required field">
-    <div class="form-label">
+  <div id="id-treatment-form-group" class="form-group" data-required data-error="describe your patient’s treatment">
+    <label class="form-label">
       Give details of treatments, including the dates and the patient’s response to the treatment.
-    </div>
+    </label>
     <textarea id="id-treatment" name="treatment" class="form-control form-control-3-4" rows="5"></textarea>
   </div>
 
@@ -196,7 +188,7 @@
   <!-- YOUR DETAILS - - - - - - - - - - - - - - - - - - - - - - - - -->
   <h1 class="heading-large" style="float:left">Your details</h1>
 
-  <div id="id-declaration-form-group" class="form-group" data-required data-error="Declaration is a required field">
+  <div id="id-declaration-form-group" class="form-group" data-required data-error="select your role">
     <legend class="form-label">
       I am the patient&rsquo;s:
     </legend>
@@ -220,7 +212,7 @@
     </fieldset>
 
     <div class="panel panel-border-narrow js-hidden" id="declaration-other-details" aria-hidden="false" style="margin-top:15px">
-      <div id="id-declarationAdditionalDetail-form-group" class="form-group" data-required data-error="GMC number is a required field">
+      <div id="id-declarationAdditionalDetail-form-group" class="form-group" data-required data-error="enter your GMC number">
         <label class="form-label text" for="id-declarationAdditionalDetail">
           Please specify
         </label>
@@ -229,7 +221,7 @@
     </div>
 
     <div class="panel panel-border-narrow js-hidden" id="declaration-GMC-number" aria-hidden="false" style="margin-top:15px">
-      <div id="id-declarationAdditionalDetail-form-group" class="form-group" data-required data-error="GMC number is a required field">
+      <div id="id-declarationAdditionalDetail-form-group" class="form-group" data-required data-error="enter your GMC number">
         <label class="form-label text" for="id-declarationAdditionalDetail">
           GMC number
         </label>
@@ -239,14 +231,14 @@
   
   </div>
 
-  <div id="id-gpName-form-group" class="form-group" data-required data-error="Your name is a required field">
+  <div id="id-gpName-form-group" class="form-group" data-required data-error="enter your name">
     <label class="form-label text" for="id-gpName">
       Your name
     </label>
     <input id="id-gpName" name="gpName" class="form-control " type="text" value="">
   </div>
 
-  <div id="id-gpAddress-form-group" class="form-group" data-required data-error="Your address is a required field">
+  <div id="id-gpAddress-form-group" class="form-group" data-required data-error="enter your address">
     <label class="form-label text" for="id-gpAddress">
       Your address
     </label>

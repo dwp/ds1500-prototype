@@ -44,7 +44,7 @@ function validate(e) {
                     );
 
                     $('.error-summary-list:first').append(
-                        String('<li><a href="#' + id + '">' + errorMessage + '</a></li>')
+                        String('<li><a href="#' + formGroup.attr('id') + '">' + errorMessage + '</a></li>')
                     );
                 }
             } else {
@@ -84,7 +84,7 @@ function validate(e) {
                     );
 
                     $('.error-summary-list:first').append(
-                        String('<li><a href="#' + id + '">' + errorMessage + '</a></li>')
+                        String('<li><a href="#' + formGroup.attr('id') + '">' + errorMessage + '</a></li>')
                     );
                 }
             } else {
@@ -104,7 +104,7 @@ function validate(e) {
                 var label = $('label[for="' + $(this).attr('id') + '"]');
                 var errorMessage = $(this).parent().attr('data-error') || 'Enter ' + label.text().toLowerCase();
 
-                debugger;
+                // debugger;
 
                 if ($(this).val().length === 0) {
                     invalid.push($(this).attr('id'));
@@ -120,7 +120,7 @@ function validate(e) {
 
                         // Add the error to the summary list at the top of the page
                         $('.error-summary-list:first').append(
-                            String('<li><a href="#' + id + '">' + errorMessage + '</a></li>')
+                            String('<li><a href="#' + formGroup.attr('id') + '">' + errorMessage + '</a></li>')
                         );
 
                         num++;
@@ -155,7 +155,7 @@ function validate(e) {
 
                         // Add the error to the summary list at the top of the page
                         $('.error-summary-list:first').append(
-                            String('<li><a href="#' + id + '">' + errorMessage + '</a></li>')
+                            String('<li><a href="#' + formGroup.attr('id') + '">' + errorMessage + '</a></li>')
                         );
 
                         num++;
