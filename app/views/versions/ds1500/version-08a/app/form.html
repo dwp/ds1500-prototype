@@ -1,0 +1,286 @@
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+<a class="link-back" href="index">Back</a>
+
+{% include "../../../../includes/error-summary.html" %}
+
+<form action="{{ prototype.current.path }}download" method="get">
+
+  <h1 class="heading-large">Patient details</h1>
+
+  <div id="id-patientName-form-group" class="form-group" data-required data-error="enter your patient&rsquo;s name">
+    <label class="form-label text" for="id-patientName">
+      Name
+    </label>
+    <input id="id-patientName" name="patientName" class="form-control" type="text" value="">
+  </div>
+
+  <div id="id-patientAddress-form-group" style="margin-bottom:10px" class="form-group" data-required data-error="enter your patient&rsquo;s address">
+    <label class="form-label text" for="id-patientAddress">
+      Address
+    </label>
+    <textarea id="id-patientAddress" name="patientAddress" class="form-control" rows="5"></textarea>
+  </div>
+
+  <div id="id-patientPostcode-form-group" class="form-group" data-required data-error="enter your patient&rsquo;s postcode">
+    <label class="form-label text" for="id-patientPostcode">
+      Postcode
+    </label>
+    <input id="id-patientPostcode" name="patientPostcode" class="form-control " type="text" value="">
+  </div>
+
+  <div id="id-patientDateOfBirth-form-group" class="form-group date-group ">
+    <fieldset>
+      <legend class="form-label text" for="id-patientDateOfBirth">
+        Date of birth
+      </legend>
+      <div class="form-date">
+        <div class="form-group form-group-day">
+          <label class="form-hint">Day</label>
+          <input type="text" name="patientDateOfBirth-day" class="day js-day form-control" size="2" maxlength="2">
+        </div>
+        <div class="form-group form-group-month">
+          <label class="form-hint">Month</label>
+          <input type="text" name="patientDateOfBirth-month" class="month js-month form-control" size="2" maxlength="2">
+        </div>
+        <div class="form-group form-group-year">
+          <label class="form-hint">Year</label>
+          <input type="text" name="patientDateOfBirth-year" class="year js-year form-control" size="4" maxlength="4">
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div id="id-patientNino-form-group" class="form-group">
+    <label class="form-label text" for="id-patientNino">
+      National Insurance number
+    </label>
+    <div class="form-hint text">
+      (this form is processed quicker if you have it)
+    </div>
+    <input id="id-patientNino" name="patientNino" class="form-control " type="text" value="">
+  </div>
+
+  <!-- DIAGNOSIS - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <h1 class="heading-large" style="float:left">Diagnosis</h1>
+
+  <div id="id-diagnosis-form-group" class="form-group" data-required data-error="describe your patient&rsquo;s diagnosis">
+    <label class="form-label text" for="id-diagnosis">
+      Include details of the patient’s main diagnosis, and any others that are relevant.
+    </label>
+    <textarea id="id-diagnosis" name="diagnosis" class="form-control form-control-3-4" rows="5"></textarea>
+  </div>
+
+  <div id="id-dateOfDiagnosis-form-group" class="form-group date-group">
+    <fieldset>
+      <legend class="form-label text" for="id-dateOfDiagnosis">
+        Date of diagnosis (if known)
+      </legend>
+      <div class="form-date">
+        {# <div class="form-hint"> For example, 04 2015 </div> #}
+        <div class="form-error validation-message hidden"></div>
+        <div class="form-group form-group-month">
+          <label class="form-hint">Month</label>
+          <input type="text" name="dateOfDiagnosis-month" class="month js-month form-control" size="2" maxlength="2">
+        </div>
+        <div class="form-group form-group-year">
+          <label class="form-hint">Year</label>
+          <input type="text" name="dateOfDiagnosis-year" class="year js-year form-control" size="4" maxlength="4">
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  {#
+  <div id="id-otherDiagnoses-form-group" class="form-group">
+    <label class="form-label text" for="id-otherDiagnoses">Other relevant diagnoses? (optional)</label>
+    <textarea id="id-otherDiagnoses" name="otherDiagnoses" class="form-control" rows="5"></textarea>
+  </div>
+  #}
+
+  <div id="id-patientAware-form-group" class="form-group inline" data-required data-error="select if your patient is aware of their condition">
+    <legend class="form-label">
+      Is the patient aware of their prognosis? 
+    </legend>
+    <fieldset>
+      <label class="block-label" for="id-patientAware-1" data-target="">
+        <input id="id-patientAware-1" type="radio" name="patientAware" value="Yes" />
+        Yes
+      </label>
+      <label class="block-label" for="id-patientAware-2" data-target="">
+        <input id="id-patientAware-2" type="radio" name="patientAware" value="No" />
+        No
+      </label>
+    </fieldset>
+  </div>
+
+  <div id="id-formRequester-form-group" class="form-group" data-required data-error="select who asked you to complete this form">
+    <legend class="form-label">
+      Who asked you to complete this form?
+    </legend>
+    <fieldset>
+      <label class="block-label" for="id-formRequester-1" data-target="">
+        <input id="id-formRequester-1" type="radio" name="formRequester" value="Patient" />
+        the patient
+      </label>
+      <label class="block-label" for="id-formRequester-2" data-target="requested-details">
+        <input id="id-formRequester-2" type="radio" name="formRequester" value="Representative" />
+        a representative of the patient
+      </label>
+    </fieldset>
+    <!-- HIDDEN AT FIRST -->
+    <div class="panel panel-border-narrow js-hidden" id="requested-details" aria-hidden="false" style="margin-top:15px;">
+      <div class="form-group">
+        <p class="form-label add-padding" for="fullName">Representative details</p>
+        <div id="id-representativeName-form-group" class="form-group " >
+          <label class="form-label text" for="id-representativeName">
+            Name
+          </label>
+          <input id="id-representativeName" name="representativeName" class="form-control " type="text" value="">
+        </div>
+        <div id="id-representativeAddress-form-group" class="form-group">
+          <label class="form-label text" for="id-representativeAddress">
+            Address
+          </label>
+          <textarea id="id-representativeAddress" name="representativeAddress" class="form-control" rows="5"></textarea>
+        </div>
+        <div id="id-representativePostcode-form-group" class="form-group">
+          <label class="form-label text" for="id-representativePostcode">
+            Postcode
+          </label>
+          <input id="id-representativePostcode" name="representativePostcode" class="form-control " type="text" value="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Clinical Features - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <h1 class="heading-large" style="float:left">Clinical features</h1>
+
+  <div id="id-clinicalFeatures-form-group" class="form-group" data-required data-error="describe the clinical features">
+    <label class="form-label text" for="id-clinicalFeatures">
+      Give details of the clinical features that indicate a severe progressive condition.
+    </label>
+    <div class="form-hint" style="margin:0.5em 0;">
+      For example: the rate of progression, recurrence, staging, tumour markers, CD4 count and viral load, bulbar involvement, respiratory problems, heart failure.
+    </div>
+    <textarea id="id-clinicalFeatures" name="clinicalFeatures" class="form-control form-control-3-4" rows="5"></textarea>
+  </div>
+  
+  <!-- TREATMENT - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <h1 class="heading-large" style="float:left">Treatment</h1>
+
+  <div id="id-treatment-form-group" class="form-group" data-required data-error="describe your patient’s treatment">
+    <label class="form-label">
+      Give details of treatments, including the dates and the patient’s response to the treatment.
+    </label>
+    <textarea id="id-treatment" name="treatment" class="form-control form-control-3-4" rows="5"></textarea>
+  </div>
+
+  <div id="id-otherIntervention-form-group" class="form-group">
+    <div class="form-label">
+      If there are any interventions or treatments planned which could significantly change the progression of the patient’s condition, give details.
+    </div>
+    <textarea id="id-otherIntervention" name="otherIntervention" class="form-control form-control-3-4" rows="5"></textarea>
+  </div>
+  
+  <!-- YOUR DETAILS - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <h1 class="heading-large" style="float:left">Your details</h1>
+
+  <div id="id-declaration-form-group" class="form-group" data-required data-error="select your role">
+    <legend class="form-label">
+      I am the patient&rsquo;s:
+    </legend>
+    <fieldset>
+      <label class="block-label" for="id-declaration-1" data-target="declaration-GMC-number">
+        <input id="id-declaration-1" type="radio" name="declaration" value="General Practitioner" />
+        General Practitioner
+      </label>
+      <label class="block-label" for="id-declaration-4">
+        <input id="id-declaration-4" type="radio" name="declaration" value="Macmillan nurse" />
+        Macmillan nurse
+      </label>
+      <label class="block-label" for="id-declaration-2" data-target="declaration-GMC-number">
+        <input id="id-declaration-2" type="radio" name="declaration" value="GMC registered consultant" />
+        GMC registered consultant
+      </label>
+      <label class="block-label" for="id-declaration-3" data-target="declaration-other-details">
+        <input id="id-declaration-3" type="radio" name="declaration" value="Other" />
+        Other
+      </label>
+    </fieldset>
+
+    <div class="panel panel-border-narrow js-hidden" id="declaration-other-details" aria-hidden="false" style="margin-top:15px">
+      <div id="id-declarationAdditionalDetail-form-group" class="form-group" data-required data-error="enter your GMC number">
+        <label class="form-label text" for="id-declarationAdditionalDetail">
+          Please specify
+        </label>
+        <input id="id-declarationAdditionalDetail" name="declarationAdditionalDetail" class="form-control " type="text" value="">
+      </div>
+    </div>
+
+    <div class="panel panel-border-narrow js-hidden" id="declaration-GMC-number" aria-hidden="false" style="margin-top:15px">
+      <div id="id-declarationAdditionalDetail-form-group" class="form-group" data-required data-error="enter your GMC number">
+        <label class="form-label text" for="id-declarationAdditionalDetail">
+          GMC number
+        </label>
+        <input id="id-declarationAdditionalDetail" name="declarationAdditionalDetail" class="form-control " type="text" value="">
+      </div>
+    </div>
+  
+  </div>
+
+  <div id="id-gpName-form-group" class="form-group" data-required data-error="enter your name">
+    <label class="form-label text" for="id-gpName">
+      Your name
+    </label>
+    <input id="id-gpName" name="gpName" class="form-control " type="text" value="">
+  </div>
+
+  <div id="id-gpAddress-form-group" class="form-group" data-required data-error="enter your address">
+    <label class="form-label text" for="id-gpAddress">
+      Your address
+    </label>
+    <textarea id="id-gpAddress" name="gpAddress" class="form-control" rows="5"></textarea>
+  </div>
+
+  <div id="id-gpPhone-form-group" class="form-group " >
+    <label class="form-label text" for="id-gpPhone">
+      Your phone number
+    </label>
+    <input id="id-gpPhone" name="gpPhone" class="form-control " type="text" value="">
+  </div>
+
+  <!-- Declaration - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <h1 class="heading-large" style="float:left; margin-bottom:0">Declaration</h1>
+
+  <div class="form-group">
+    <div class="text">
+      <br>You confirm that:
+    </div>
+    <ul class="list-bullet list">
+      <li>the person named in this report is your patient</li>
+      <li>this is a full report of their condition and treatment</li>
+      {# <li>you have read and understood the notes on the completion of this form.</li> #}
+      {# <li>you are satisfied that the form is appropriate</li> #}
+    </ul>
+  </div>
+
+  <div class="form-group">
+    <input type="submit" class="button" value="I agree, send the report">
+  </div>
+
+</form>
+{% endblock %}
+
+{% block secondary %}
+{% endblock %}
+
+{% block body_end %}
+
+{{ super() }}
+
+<script src="/public/javascripts/validate.js"></script>
+
+{% endblock %}
