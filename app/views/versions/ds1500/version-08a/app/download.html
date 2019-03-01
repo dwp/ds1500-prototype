@@ -1,0 +1,47 @@
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+
+  <a class="link-back" href="javascript:history.go(-1);">Back</a>
+
+  <div class="govuk-box-highlight" style="padding:1em 1em 0.8em;text-align:left">
+    <h2 class="bold-small">Report received</h2>
+  </div>
+
+  <h1 class="heading-large" style="margin-bottom:30px">Download your documents</h1>
+
+  <div class="panel panel-border-wide alert-warning" style="margin-bottom:40px">
+    <p>This is your only chance to download these documents, so do it now.</p>
+  </div>
+
+  <div class="attachment clearfix" style="margin-top:30px;">
+    <div class="attachment-thumb">
+        <a aria-hidden="true" class="thumbnail" href="/public/pdf/testfee.pdf"><img alt="" src="/public/images/testfee.jpg"></a>
+    </div>
+    <div class="attachment-details">
+      <h2 class="title"><a  href="/public/pdf/testfee.pdf">DS1500 - Claim your fee</a></h2>
+      <p class="metadata">
+          <span class="type"><abbr title="Portable Document Format">PDF</abbr></span>,
+          <span class="file-size">5.34MB</span>
+          <p>To claim your £17 fee download this form, fill it in and post it to DWP.</p>
+      </p>
+    </div>
+  </div>
+
+  <div class="attachment clearfix" style="margin-top:30px; clear:both">
+    <div class="attachment-thumb">
+        <a aria-hidden="true" class="thumbnail" href="/public/pdf/dummy_pdf.pdf"><img alt="" src="/public/images/dummyreport.jpg"></a>
+    </div>
+    <div class="attachment-details">
+      <h2 class="title"><a  href="/public/pdf/dummy_pdf.pdf">DS1500 doctor's report</a></h2>
+      <p class="metadata">
+          <span class="type"><abbr title="Portable Document Format">PDF</abbr></span>,
+          <span class="file-size">5.34MB</span>
+          <p>Download the report for your records.</p>
+      </p>
+    </div>
+  </div>
+
+  <p style="clear:both;margin-top:30px;"><a href="index">Send another DS1500</a></p>
+
+{% endblock %}

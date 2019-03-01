@@ -1,0 +1,31 @@
+
+{% extends page.layout | d(prototype.current.layout) %}
+
+{% block primary %}
+
+<h1 class="form-title heading-large">Report that a patient could live less than 6 months (form DS1500)</h1>
+
+<div class="form-group">
+
+  <p>Use this service to tell the Department for Work and Pensions (DWP) that a patient:</p>
+  <ul class="list list-bullet">
+    <li>has a severe progressive condition</li>
+    <li>could live less than 6 months even if there’s a chance they could live longer</li>
+  </ul>
+
+  <p>Also use this service to download a copy of the information you give for your own records.</p>
+
+  <p>DWP will prioritise any benefit applications it gets from the patient that you give details for.</p>
+  <!-- <ul class="list list-bullet">
+    <li>they’re suffering from a progressive disease </li>
+    <li>you would not be surprised if your patient lives less than 6 months</li>
+  </ul> -->
+
+
+
+</div><!-- .form-group -->
+
+<p><a id="ds1500-start" href="form.html" class="button button-start" role="button">Start now </a></p>
+
+
+{% endblock %}
