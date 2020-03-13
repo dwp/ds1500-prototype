@@ -32,7 +32,7 @@
     "grunt-sync": "^0.5.1",
     "hogan.js": "3.0.2",
     "lodash": "^4.13.1",
-    "minimist": "0.0.8",
+    "minimist": "1.2.5",
     "multer": "^1.1.0",
     "portscanner": "^1.0.0",
     "prompt": "^0.2.14",
